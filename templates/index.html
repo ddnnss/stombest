@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>kl</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static  'css/style.css'%}">
+     <link rel="stylesheet" href="{% static  'css/tiny-slider.css'%}">
+</head>
+<body>
+{% if request.user.is_authenticated %}
+    <header class="header ">
+    <div class="header-wrapper">
+        <p>Главная</p>
+        <div class="mobile-toggle-wrapper">
+            <div class="mobile-toggle"></div>
+        </div>
+
+    </div>
+   {% include 'menu.html' %}
+
+</header>
+<div class="main-overlay"></div>
+ <div class="promo-tabs">
+    <div class="promo-tabs__tab tab-active">
+    <a href="#">Акции и Скидки</a>
+    </div>
+       <div class="promo-tabs__tab ">
+        <a href="#">Предложения для Вас</a>
+    </div>
+ </div>
+<div class="actions">
+
+</div>
+<div class="container">
+
+<div class="actions">
+    <div class="slider" id="slider" >
+        {% for i in banner %}
+        <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center">
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+
+
+    {% for ap in apply %}
+    <div class="user-info">
+        <div class="user-info-item">
+            <div class="user-info-item__title">
+                <p>вы записаны</p>
+                <p>1 января 1:00</p>
+            </div>
+            <div class="user-info-item__description">
+                <p>Доктор<br>{{ ap.doc.name }}<br>{{ ap.doc.cabinet }}</p>
+                <p>Название услуги</p>
+            </div>
+        </div>
+    </div><!--// user-info-->
+   {% endfor %}
+
+<div class="footr">
+   <div class="footr-inner">
+       <a href="#"><img style="width: 60px" src="{% static 'img/phone.png' %}" alt=""> </a>
+       <a href="#"><img style="width: 60px" src="{% static 'img/white.png' %}" alt=""> </a>
+   </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+{% else %}
+ <section class="login-register">
+
+    <img class="logo" src="https://www.stombest.ru/images/logo.png" alt="">
+
+        <form action="{% url 'login_req' %}" id="login_form" class="login-form login-form-active" method="post">{% csrf_token %}
+        <input type="text" class="form-control" name="email" placeholder="E-MAIL">
+        <input type="password" class="form-control" name="password" placeholder="пароль">
+
+            <button type="submit" class="btn" >вход</button>
+            <a href="javascript:void(0)" onclick="changeForm()" class="btn">регистрация</a>
+
+
+        </form>
+      <form action="{% url 'reg_req' %}" id="register_form" class="login-form reg-form" method="post">{% csrf_token %}
+        <input type="text" class="form-control" name="{{ loginform.email.name }}" placeholder="E-MAIL">
+        <input type="password" class="form-control" name="{{ loginform.password1.name }}" placeholder="пароль">
+          <input type="password" class="form-control" name="{{ loginform.password2.name }}" placeholder="пароль">
+
+            <button type="submit" class="btn">регистрация</button>
+
+
+
+    </form>
+
+</section>
+{% endif %}
+
+
+
+
+
+
+</body>
+<script src="{% static 'js/tiny-slider.js' %} "></script>
+<script>
+
+    var mobile = 'true',
+        isTestPage = false,
+        isDemoPage = true,
+        classIn = 'jello',
+        classOut = 'rollOut',
+        speed = 400,
+        doc = document,
+        win = window,
+        ww = win.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth,
+        fw = getFW(ww),
+        initFns = {},
+        sliders = new Object(),
+        edgepadding = 50,
+        gutter = 10;
+
+    function getFW (width) {
+        var sm = 400, md = 900, lg = 1400;
+        return width < sm ? 150 : width >= sm && width < md ? 200 : width >= md && width < lg ? 300 : 400;
+    }
+    window.addEventListener('resize', function() { fw = getFW(ww); });
+
+    var options = {
+        'slider': {
+            container: '',
+            items: 1,
+            center: true,
+            loop: false,
+            swipeAngle: false,
+            speed: 400,
+            autoplay: false,
+            autoplayTimeout: 4000,
+            gutter: 10,
+            controls: false,
+            nav: true,
+            navPosition:'bottom',
+
+
+        },
+    }
+
+    for (var i in options) {
+        var item = options[i];
+        item.container = '#' + i;
+        item.swipeAngle = false;
+        if (!item.speed) { item.speed = speed; }
+        if (document.querySelector(item.container)) {
+            sliders[i] = tns(options[i]);
+            if (isTestPage && initFns[i]) { initFns[i](); }
+        } else if (i.indexOf('responsive') >= 0) {
+            if (isTestPage && initFns[i]) { initFns[i](); }
+        }
+    }
+
+
+ function changeForm() {
+        let loginForm = document.getElementById('login_form')
+        let regForm = document.getElementById('register_form')
+
+        loginForm.classList.remove('login-form-active')
+        regForm.classList.add('reg-form-active')
+
+    }
+
+
+
+    document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+        this.classList.toggle('mobile-toggle-active')
+        document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
+    })
+
+</script>
+</html>

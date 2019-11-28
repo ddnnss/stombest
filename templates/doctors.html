@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>kl</title>
+
+     <link rel="stylesheet" href="{% static  'css/style.css'%}">
+
+</head>
+<body>
+
+<header class="header ">
+    <div class="header-wrapper">
+
+        <a href="/">Врачи</a>
+        <div class="mobile-toggle-wrapper">
+            <div class="mobile-toggle"></div>
+        </div>
+
+    </div>
+  {% include 'menu.html' %}
+
+</header>
+
+
+<div class="container">
+    {% for d in docs %}
+
+    <div class="doctor-info">
+        <div class="doctor-info-item">
+            <div class="doctor-info-item__title">
+                <p>1 января 1:00</p>
+            </div>
+            <div class="doctor-info-item__photo">
+                <img src="http://placehold.it/50">
+                <p>Доктор<br>{{ d.name }}<br>{{ d.cabinet }}</p>
+            </div>
+            <a onclick="apply({{ d.id }})" class="btn">записаться</a>
+        </div>
+    </div><!--// doctor-info-->
+    {% endfor %}
+
+</div><!--// container-->
+
+
+
+
+</body>
+
+<script>
+
+    function apply(id) {
+        window.location.replace(`/apply?doc=${id}`);
+    }
+
+
+
+    document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+        this.classList.toggle('mobile-toggle-active')
+        document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+    })
+
+</script>
+</html>

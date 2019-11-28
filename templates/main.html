@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>kl</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+</head>
+<body>
+
+<header class="header ">
+    <div class="header-wrapper">
+        <p>Главная</p>
+        <div class="mobile-toggle-wrapper">
+            <div class="mobile-toggle"></div>
+        </div>
+
+    </div>
+    <div class="menu-wrapper">
+
+        <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="lk.html">Личный кабинет</a>
+        </div>
+        <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="doctors.html">Врачи</a>
+        </div>
+        <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="services.html">Услуги</a>
+        </div>
+        <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="#">Личный кабинет</a>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="#">Личный кабинет</a>
+        </div>
+          <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="#">Личный кабинет</a>
+        </div>
+        <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="#">Личный кабинет</a>
+        </div>
+        <div class="menu-item">
+            <img src="img/1.jpg">
+            <a href="#">Личный кабинет</a>
+        </div>
+
+
+
+    </div>
+
+</header>
+<div class="main-overlay"></div>
+ <div class="promo-tabs">
+    <div class="promo-tabs__tab tab-active">
+    <a href="#">Акции и Скидки</a>
+    </div>
+       <div class="promo-tabs__tab ">
+        <a href="#">Предложения для Вас</a>
+    </div>
+ </div>
+<div class="actions">
+
+</div>
+<div class="container">
+
+<div class="actions">
+    <div class="slider" id="slider" >
+        <div class="slider-item" style="background: url(https://dummyimage.com/500x300/f5f/fff) no-repeat center">
+
+        </div>
+        <div class="slider-item" style="background: url(https://dummyimage.com/500x300/f0f/fff) no-repeat center">
+
+        </div>
+        <div class="slider-item" style="background: url(https://dummyimage.com/500x300/f0f/fff) no-repeat center">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <div class="user-info">
+        <div class="user-info-item">
+            <div class="user-info-item__title">
+                <p>вы записаны</p>
+                <p>1 января 1:00</p>
+            </div>
+            <div class="user-info-item__description">
+                <p>Доктор<br>Иван Петров<br>каб.666</p>
+                <p>Название услуги</p>
+            </div>
+        </div>
+    </div><!--// user-info-->
+      <div class="user-info">
+        <div class="user-info-item">
+            <div class="user-info-item__title">
+                <p>вы записаны</p>
+                <p>1 января 1:00</p>
+            </div>
+            <div class="user-info-item__description">
+                <p>Доктор<br>Иван Петров<br>каб.666</p>
+                 <p>Название услуги</p>
+            </div>
+        </div>
+    </div><!--// user-info-->
+      <div class="user-info">
+        <div class="user-info-item">
+            <div class="user-info-item__title">
+                <p>вы записаны</p>
+                <p>1 января 1:00</p>
+            </div>
+            <div class="user-info-item__description">
+                <p>Доктор<br>Иван Петров<br>каб.666</p>
+                <p>Название услуги</p>
+            </div>
+        </div>
+    </div><!--// user-info-->
+       <div class="user-info">
+        <div class="user-info-item">
+            <div class="user-info-item__title">
+                <p>вы записаны</p>
+                <p>1 января 1:00</p>
+            </div>
+            <div class="user-info-item__description">
+                <p>Доктор<br>Иван Петров<br>каб.666</p>
+               <p>Название услуги</p>
+            </div>
+        </div>
+    </div><!--// user-info-->
+       <div class="user-info">
+        <div class="user-info-item">
+            <div class="user-info-item__title">
+                <p>вы записаны</p>
+                <p>1 января 1:00</p>
+            </div>
+            <div class="user-info-item__description">
+                <p>Доктор<br>Иван Петров<br>каб.666</p>
+               <p>Название услуги</p>
+            </div>
+        </div>
+    </div><!--// user-info-->
+
+
+
+</div>
+
+
+
+
+</body>
+<script src="js/tiny-slider.js"></script>
+<script>
+
+    var mobile = 'true',
+        isTestPage = false,
+        isDemoPage = true,
+        classIn = 'jello',
+        classOut = 'rollOut',
+        speed = 400,
+        doc = document,
+        win = window,
+        ww = win.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth,
+        fw = getFW(ww),
+        initFns = {},
+        sliders = new Object(),
+        edgepadding = 50,
+        gutter = 10;
+
+    function getFW (width) {
+        var sm = 400, md = 900, lg = 1400;
+        return width < sm ? 150 : width >= sm && width < md ? 200 : width >= md && width < lg ? 300 : 400;
+    }
+    window.addEventListener('resize', function() { fw = getFW(ww); });
+
+    var options = {
+        'slider': {
+            container: '',
+            items: 1,
+            center: true,
+            loop: false,
+            swipeAngle: false,
+            speed: 400,
+            autoplay: false,
+            autoplayTimeout: 4000,
+            gutter: 10,
+            controls: false,
+            nav: true,
+            navPosition:'bottom',
+
+
+        },
+    }
+
+    for (var i in options) {
+        var item = options[i];
+        item.container = '#' + i;
+        item.swipeAngle = false;
+        if (!item.speed) { item.speed = speed; }
+        if (document.querySelector(item.container)) {
+            sliders[i] = tns(options[i]);
+            if (isTestPage && initFns[i]) { initFns[i](); }
+        } else if (i.indexOf('responsive') >= 0) {
+            if (isTestPage && initFns[i]) { initFns[i](); }
+        }
+    }
+
+
+
+
+
+
+    document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+        this.classList.toggle('mobile-toggle-active')
+        document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
+    })
+
+</script>
+</html>
