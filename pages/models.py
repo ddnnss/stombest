@@ -9,6 +9,7 @@ class Banner(models.Model):
 class Doctor(models.Model):
     name = models.CharField('ФИО Доктора', max_length=255,blank=False, null=True)
     cabinet = models.CharField('Кабинет', max_length=255, blank=False, null=True)
+    image = models.ImageField("Картинко", blank=False, null=True)
 
 
 class Service(models.Model):

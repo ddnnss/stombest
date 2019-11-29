@@ -47,7 +47,7 @@ def reg_req(request):
     if not form.errors:
         new_user = form.save(data)
         login(request, new_user)
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/lk")
     else:
         print(form.errors)
 
@@ -61,3 +61,7 @@ def todoc(request):
 
 
 
+def lk(request):
+    docs=Doctor.objects.all()
+
+    return render(request, 'lk.html', locals())

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>kl</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static  'css/style.css'%}">
 
 </head>
 <body>
@@ -13,51 +14,13 @@
 <header class="header ">
     <div class="header-wrapper">
 
-        <a href="main.html">Профиль</a>
+        <a href="/">Профиль</a>
         <div class="mobile-toggle-wrapper">
             <div class="mobile-toggle"></div>
         </div>
 
     </div>
-  <div class="menu-wrapper">
-
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="lk.html">Личный кабинет</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="doctors.html">Врачи</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="services.html">Услуги</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-          <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-
-
-
-    </div>
+  {% include 'menu.html' %}
 
 </header>
  <div class="user-photo">

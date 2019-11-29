@@ -34,7 +34,7 @@
                 <p>1 января 1:00</p>
             </div>
             <div class="doctor-info-item__photo">
-                <img src="http://placehold.it/50">
+                <img src="{{ d.image.url }}">
                 <p>Доктор<br>{{ d.name }}<br>{{ d.cabinet }}</p>
             </div>
             <a onclick="apply({{ d.id }})" class="btn">записаться</a>
