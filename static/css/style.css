@@ -119,8 +119,13 @@ a {
   margin: 0 auto;
   padding: 0 10px;
   height: 100vh;
-  margin-top: 10px; }
-
+  margin-top: 10px;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;}
+.container.doctor{
+  justify-content: unset;
+}
 .main-overlay {
   position: absolute;
   background: rgba(0, 0, 0, 0.51);
