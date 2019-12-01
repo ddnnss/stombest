@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>kl</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{% static  'css/style.css'%}">
+
+</head>
+<body>
+
+<header class="header ">
+    <div class="header-wrapper">
+         <a href="/">Контакты</a>
+        <div class="mobile-toggle-wrapper">
+            <div class="mobile-toggle"></div>
+        </div>
+
+    </div>
+   {% include 'menu.html' %}
+
+</header>
+<div class="main-overlay"></div>
+
+
+<div style="margin: 0" class="container">
+    <div style="margin-bottom: 10px">
+       <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A03bcb24daf6952716fd4044af5505404398053a62044ffec379477ba13b4e472&amp;width=100%25&amp;height=240&amp;lang=ru_RU&amp;scroll=true"></script>
+
+
+    </div>
+
+
+
+
+ <div class="contact-info">
+
+     <div class="contact-info-top">
+      <p>Г. Москва, ул. Ивана Емели, д. 1</p>
+         <p>+7 800 000 00 00</p>
+         <p>123@mail.ru</p>
+      </div>
+        <div class="contact-info-bottom">
+<p>Время работы: ПН-ПТ: С 10 до 22       СБ, ВС: Выходной</p>
+     </div>
+
+ </div>
+
+
+
+</div>
+<div class="footr">
+   <div class="footr-inner">
+       <a href="#"><img style="width: 60px" src="{% static 'img/phone.png' %}" alt=""> </a>
+       <a href="#"><img style="width: 60px" src="{% static 'img/white.png' %}" alt=""> </a>
+   </div>
+</div>
+
+
+<script>
+       document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+        this.classList.toggle('mobile-toggle-active')
+        document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
+    })
+</script>
+</body>
+
+</html>

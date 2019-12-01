@@ -19,15 +19,24 @@ def doc(request):
     docs=Doctor.objects.all()
 
     return render(request, 'doctors.html', locals())
+def contact(request):
 
+
+    return render(request, 'contact.html', locals())
 def services(request):
-    serv=Service.objects.all()
+    serv=ServiceCat.objects.all()
 
     return render(request, 'services.html', locals())
 def service(request,id):
-    serv=Service.objects.get(id=id)
+    serv=ServiceCat.objects.get(id=id)
 
     return render(request, 'service.html', locals())
+
+def apply(request,id):
+    serv=Service.objects.get(id=id)
+    docs = Doctor.objects.filter(services=id)
+
+    return render(request, 'apply.html', locals())
 
 def login_req(request):
     user = authenticate(username=request.POST.get('email'), password=request.POST.get('password'))

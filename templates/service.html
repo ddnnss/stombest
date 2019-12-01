@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>kl</title>
-
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="{% static  'css/style.css'%}">
 
 </head>
@@ -50,29 +50,27 @@
 
 <div class="container">
     <div class="service-buttons">
-
+        {% for ser in serv.service_set.all %}
         <div style="flex-basis: 150px;
     color: #fff;
     padding: 10px;" class="service-buttons__button">
-            <p>название</p>
-            <p>цена</p>
-            <a>запись</a>
+            <p>{{ ser.name }}</p>
+            <p>цена {{ ser.price }} руб</p>
+            <a href="{% url 'apply' ser.id %}">запись</a>
         </div>
-
-        <div style="flex-basis: 150px;
-    color: #fff;
-    padding: 10px;" class="service-buttons__button">
-            <p>название</p>
-            <p>цена</p>
-            <a>запись</a>
-        </div>
+        {% endfor %}
 
     </div>
 
 </div>
 
 
-
+<div class="footr">
+   <div class="footr-inner">
+       <a href="#"><img style="width: 60px" src="{% static 'img/phone.png' %}" alt=""> </a>
+       <a href="#"><img style="width: 60px" src="{% static 'img/white.png' %}" alt=""> </a>
+   </div>
+</div>
 
 
 </body>
