@@ -34,9 +34,27 @@ def service(request,id):
 
 def apply(request,id):
     serv=Service.objects.get(id=id)
+    months = Month.objects.all()
+    days = Day.objects.all()
+    times = Time.objects.all()
     docs = Doctor.objects.filter(services=id)
 
     return render(request, 'apply.html', locals())
+
+def apply_req(request):
+    doc=request.GET.get('doc')
+    mon = request.GET.get('mon')
+    day = request.GET.get('day')
+    time = request.GET.get('time')
+    service = request.GET.get('service')
+    if doc:
+        Apply.objects.create(doc_id=int(doc),client=request.user,service_id=int(service),day_id=int(day),time_id=int(time),month_id=int(mon))
+    else:
+        Apply.objects.create(client=request.user, service_id=int(service), day_id=int(day),
+                             time_id=int(time), month_id=int(mon))
+
+    return HttpResponseRedirect('/')
+
 
 def login_req(request):
     user = authenticate(username=request.POST.get('email'), password=request.POST.get('password'))

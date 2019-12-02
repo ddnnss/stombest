@@ -50,18 +50,20 @@
 
 
     {% for ap in apply %}
+        {% if ap.doc %}
     <div class="user-info">
         <div class="user-info-item">
             <div class="user-info-item__title">
                 <p>вы записаны</p>
-                <p>1 января 1:00</p>
+                <p>{{ ap.month.name }} {{ ap.day.name }} {{ ap.time.name }}</p>
             </div>
             <div class="user-info-item__description">
                 <p>Доктор<br>{{ ap.doc.name }}<br>{{ ap.doc.cabinet }}</p>
-                <p>Название услуги</p>
+                <p>{{ ap.service.name }}</p>
             </div>
         </div>
     </div><!--// user-info-->
+        {% endif %}
    {% endfor %}
 
 

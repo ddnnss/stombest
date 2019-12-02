@@ -6,59 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>kl</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="{% static  'css/style.css'%}">
+   <link rel="stylesheet" href="{% static 'css/style.css'%}">
 
 </head>
 <body>
 
 <header class="header ">
     <div class="header-wrapper">
-        <p>Главная</p>
+        <p>Запись на услуги</p>
         <div class="mobile-toggle-wrapper">
             <div class="mobile-toggle"></div>
         </div>
 
     </div>
-    <div class="menu-wrapper">
-
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="lk.html">Личный кабинет</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="doctors.html">Врачи</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="services.html">Услуги</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-          <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-        <div class="menu-item">
-            <img src="img/1.jpg">
-            <a href="#">Личный кабинет</a>
-        </div>
-
-
-
-    </div>
-
+   {% include 'menu.html' %}
 </header>
 <div class="main-overlay"></div>
 
@@ -70,19 +31,25 @@
         <p>цена</p>
      </div>
      <div class="apply-form">
-    <form id="apply_form" action="#" method="get">
+    <form id="apply_form" action="{% url 'apply_req' %}" method="get">
         <div class="apply-form-wrapper">
             <select required name="mon">
                 <option selected disabled>Выберите месяц</option>
-                <option>fdgfdgf</option>
+                {% for mon in months %}
+                <option value="{{ mon.id }}">{{ mon.name }}</option>
+                {% endfor %}
             </select>
              <select required  name="day">
                 <option selected disabled>Выберите день</option>
-                  <option>fdgfdgf</option>
+                    {% for day in days %}
+                  <option value="{{ day.id }}">{{day.name}}</option>
+                  {% endfor %}
             </select>
              <select  required name="time">
                 <option selected disabled>Выберите время</option>
-                  <option>fdgfdgf</option>
+                 {% for time in times %}
+                  <option value="{{ time.id }}">{{ time.name }}</option>
+                 {% endfor %}
             </select>
         </div>
         <select  name="doc">
@@ -91,7 +58,7 @@
                   <option value="{{ doc.id }}">{{ doc.name }}</option>
             {% endfor %}
             </select>
-        <input type="hidden" name="user">
+        <input type="hidden" name="service" value="{{ serv.id }}">
     </form>
      </div>
  </div>

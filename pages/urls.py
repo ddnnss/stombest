@@ -16,6 +16,7 @@ urlpatterns = [
    path('lk', views.lk, name='lk'),
    path('contact', views.contact, name='contact'),
    path('apply/<id>', views.apply, name='apply'),
+   path('apply_req', views.apply_req, name='apply_req'),
    # path('addhouse', views.addhouse, name='addhouse'),
    # path('edithouse', views.edithouse, name='edithouse'),
    # path('addfilter/<id>', views.addfilter, name='addfilter'),
