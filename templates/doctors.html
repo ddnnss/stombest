@@ -35,11 +35,12 @@
                 <img src="{{ d.image.url }}">
                 <p>{{ d.name }}<br>{{ d.cabinet }}</p>
             </div>
-            <a onclick="apply({{ d.id }})" class="btn">записаться</a>
+
+            <a href="{% url 'doctor_info' d.id %}" class="btn">подробнее</a>
             </div>
 
         </div>
-    </div><!--// doctor-info-->
+    </div><!--// doctor-info  onclick="apply({#  #}{ d.id }})" -->
 
     {% endfor %}
   </div>

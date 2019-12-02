@@ -6,6 +6,7 @@ urlpatterns = [
 
    path('', views.index, name='index'),
    path('doctor', views.doc, name='doc'),
+   path('doctor_info/<id>', views.doctor_info, name='doctor_info'),
    path('services', views.services, name='services'),
    path('services_child', views.services_child, name='services_child'),
    path('service/<id>', views.service, name='service'),
@@ -19,7 +20,7 @@ urlpatterns = [
    path('apply/<id>', views.apply, name='apply'),
    path('apply_req', views.apply_req, name='apply_req'),
    path('update_req', views.update_req, name='update_req'),
-   # path('addhouse', views.addhouse, name='addhouse'),
+   path('faq', views.faq, name='faq'),
    # path('edithouse', views.edithouse, name='edithouse'),
    # path('addfilter/<id>', views.addfilter, name='addfilter'),
    # path('addfilter_req', views.addfilter_req, name='addfilter_req'),

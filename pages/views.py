@@ -19,6 +19,11 @@ def doc(request):
     docs=Doctor.objects.all()
 
     return render(request, 'doctors.html', locals())
+
+def doctor_info(request,id):
+    doc = Doctor.objects.get(id=id)
+    return render(request, 'doctor.html', locals())
+
 def contact(request):
     return render(request, 'contact.html', locals())
 
@@ -98,7 +103,9 @@ def todoc(request):
     Apply.objects.create(doc_id=request.GET.get('doc'), client=request.user)
     return HttpResponseRedirect('/')
 
+def faq(request):
 
+    return render(request, 'faq.html', locals())
 
 
 def lk(request):

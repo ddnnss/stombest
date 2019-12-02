@@ -13,7 +13,7 @@
 
 <header class="header ">
     <div class="header-wrapper">
-        <p>Запись на услуги</p>
+        <a href="{{ request.META.HTTP_REFERER }}">Запись на услуги</a>
         <div class="mobile-toggle-wrapper">
             <div class="mobile-toggle"></div>
         </div>
@@ -27,8 +27,8 @@
 <div class="container">
      <div class="apply">
      <div class="apply-header">
-         <p>название услуги</p>
-        <p>цена</p>
+         <p>{{ serv.name }}</p>
+        <p>{{ serv.price }} руб</p>
      </div>
      <div class="apply-form">
     <form id="apply_form" action="{% url 'apply_req' %}" method="get">
