@@ -14,7 +14,7 @@
 <header class="header ">
     <div class="header-wrapper">
 
-        <a href="{{ request.META.HTTP_REFERER }}">{{ serv.name }}</a>
+        <a href="{% url 'services' %}">{{ serv.name }}</a>
         <div class="mobile-toggle-wrapper">
             <div class="mobile-toggle"></div>
         </div>
@@ -51,12 +51,14 @@
 <div class="container">
     <div class="service-buttons">
         {% for ser in serv.service_set.all %}
-        <div style="flex-basis: 150px;
+        <div style="
+        border-radius: 0;
+        flex-basis: 150px;
     color: #fff;
     padding: 10px;" class="service-buttons__button">
             <p>{{ ser.name }}</p>
             <p>цена {{ ser.price }} руб</p>
-            <a href="{% url 'apply' ser.id %}">запись</a>
+            <a style="border-radius: 0; width: 100%; text-align: center" href="{% url 'apply' ser.id %}">запись</a>
         </div>
         {% endfor %}
 

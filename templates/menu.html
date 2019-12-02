@@ -1,28 +1,29 @@
- <div class="menu-wrapper">
+{% load static %}
+<div class="menu-wrapper">
 
         <div class="menu-item">
-           <img src="http://placehold.it/50">
+           <img src="{% static 'img/LK.png' %}">
            <a href="{% url 'lk' %}">Личный кабинет</a>
         </div>
         <div class="menu-item">
-            <img src="http://placehold.it/50">
+            <img src="{% static 'img/doctors.png' %}">
             <a href="{% url 'doc' %}">Врачи</a>
         </div>
         <div class="menu-item">
-           <img src="http://placehold.it/50">
+           <img src="{% static 'img/servises.png' %}">
             <a href="{% url 'services' %}">Услуги</a>
         </div>
         <div class="menu-item">
-            <img src="http://placehold.it/50">
+            <img src="{% static 'img/home.png' %}">
             <a href="{% url 'index' %}">Акции</a>
         </div>
 
         <div class="menu-item">
-           <img src="http://placehold.it/50">
+           <img src="{% static 'img/contacts.png' %}">
             <a href="{% url 'contact' %}">Контакты</a>
         </div>
           <div class="menu-item">
-             <img src="http://placehold.it/50">
+             <img src="{% static 'img/faq.png' %}">
             <a href="{% url 'faq' %}">F.A.Q</a>
         </div>
 
