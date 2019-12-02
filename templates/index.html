@@ -88,7 +88,7 @@
     <img class="logo" src="https://www.stombest.ru/images/logo.png" alt="">
 
         <form action="{% url 'login_req' %}" id="login_form" class="login-form login-form-active" method="post">{% csrf_token %}
-        <input type="text" class="form-control" name="email" placeholder="E-MAIL">
+        <input type="text" class="form-control" name="phone" placeholder="Телефон">
         <input type="password" class="form-control" name="password" placeholder="пароль">
 
             <button type="submit" class="btn" >вход</button>
@@ -97,7 +97,7 @@
 
         </form>
       <form action="{% url 'reg_req' %}" id="register_form" class="login-form reg-form" method="post">{% csrf_token %}
-        <input type="text" class="form-control" name="{{ loginform.email.name }}" placeholder="E-MAIL">
+        <input type="text" class="form-control" name="{{ loginform.phone.name }}" placeholder="Телефон">
         <input type="password" class="form-control" name="{{ loginform.password1.name }}" placeholder="пароль">
           <input type="password" class="form-control" name="{{ loginform.password2.name }}" placeholder="пароль">
 

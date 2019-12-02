@@ -27,10 +27,11 @@ class ServiceCat(models.Model):
     tab2text = models.CharField('TAB2 текст', max_length=255, blank=False, null=True)
     tab3 = models.CharField('TAB3 название', max_length=255, blank=False, null=True)
     tab3text = models.CharField('TAB3 текст', max_length=255, blank=False, null=True)
+    isChild = models.BooleanField('Детская услуга', default=False)
 
 class Service(models.Model):
     name = models.CharField('Название услуга', max_length=255, blank=False, null=True)
-    category = models.ManyToManyField(ServiceCat, blank=False, null=True)
+    category = models.ManyToManyField(ServiceCat, blank=False, null=True, verbose_name='Категория услуг')
     price = models.IntegerField('Цена', default=0)
 
 class Doctor(models.Model):
@@ -38,7 +39,7 @@ class Doctor(models.Model):
     cabinet = models.CharField('Кабинет', max_length=255, blank=False, null=True)
     image = models.ImageField("Картинко", blank=False, null=True)
     info = models.CharField('Инфо', max_length=255, blank=False, null=True)
-    services = models.ManyToManyField(Service,blank=True,null=True,verbose_name='Услуги')
+    services = models.ManyToManyField(Service,blank=True,null=True,verbose_name='Предоставляет услуги')
 
 class Apply(models.Model):
     doc = models.ForeignKey(Doctor,blank=True,null=True, on_delete=models.CASCADE)

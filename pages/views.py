@@ -55,9 +55,11 @@ def apply_req(request):
 
     return HttpResponseRedirect('/')
 
+def update_req(request):
+    print(request.POST)
 
 def login_req(request):
-    user = authenticate(username=request.POST.get('email'), password=request.POST.get('password'))
+    user = authenticate(username=request.POST.get('phone'), password=request.POST.get('password'))
     if user is not None:
         login(request, user)
         return HttpResponseRedirect("/")
@@ -89,6 +91,7 @@ def todoc(request):
 
 
 def lk(request):
+    usr=request.user
     docs=Doctor.objects.all()
-
+    form = UpdateForm()
     return render(request, 'lk.html', locals())
