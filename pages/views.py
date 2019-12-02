@@ -20,13 +20,16 @@ def doc(request):
 
     return render(request, 'doctors.html', locals())
 def contact(request):
-
-
     return render(request, 'contact.html', locals())
-def services(request):
-    serv=ServiceCat.objects.all()
 
+def services(request):
+    serv=ServiceCat.objects.filter(isChild=False)
     return render(request, 'services.html', locals())
+
+def services_child(request):
+    serv = ServiceCat.objects.filter(isChild=True)
+
+    return render(request, 'services_child.html', locals())
 def service(request,id):
     serv=ServiceCat.objects.get(id=id)
 
@@ -57,6 +60,14 @@ def apply_req(request):
 
 def update_req(request):
     print(request.POST)
+    form = UpdateForm(request.POST, request.FILES, instance=request.user)
+    print(form.errors)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/lk')
+    else:
+        form = UpdateForm()
+    return HttpResponseRedirect("/lk")
 
 def login_req(request):
     user = authenticate(username=request.POST.get('phone'), password=request.POST.get('password'))

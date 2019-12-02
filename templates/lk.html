@@ -30,7 +30,7 @@
 
         <label style="display: flex;flex-direction: column;justify-content: center;align-items: center;color: #ffffff" for="photo">
               {% if usr.image %}
-        <img src="{{  usr.image.url }}" alt="">
+        <img width="50" height="50" src="{{  usr.image.url }}" alt="">
         {% else %}
             <img src="http://placehold.it/100" alt="">
         {% endif %}
@@ -47,13 +47,13 @@
              <div class="user-info-form-group__image">
                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAABUElEQVRIia3WyypFURzH8Q+RKFGimJBMZKBQBmYuD2Bu4lK8gJlXUAwMvYYyMTAwEQZKiULIZcBAKcllsM4pnc46e2nvX/3au7X2/n33Xpd/izRNYRcPuMAm2hLfTdYCvvFT4RscYLYISA/eq0D++hMjWUH1Gf1LaM54pgHLeUGTWQEljeUF9SeCOvOCvhJB73lBh4mgs7yg7kRQV15QeyIo9xwdJ4L2E5+LakAoObU27JX0Ia6p+QzQShEQaBGKaTXIPVqLAsFcBLSYGpC1GMp6ibSfpoKyNIRVPKr+R89YxzSa/hveIAzJZSQ85hesSZyzUZz/E1DpJ8zUggzjLSek7A9MxEA7BUHK3ouBbgsG3f0Nr4/cF6G6GKiwPSGcmrZinR3Yln3qqeVrbGCwMryuskE49YwLlbsPvaWPaBTqXpOwZ15L1zuc4EhY2lX1C/iXuBtRk3hsAAAAAElFTkSuQmCC">
              </div>
-                <input type="text" class="form-control" name="{{ form.name.name }}" value="{{ usr.name }}" placeholder="Имя">
+                <input type="text" class="form-control" name="{{ form.name.name }}" value="{% if usr.name  %}{{ usr.name }}{% else %}{% endif %}" placeholder="Имя">
          </div><!--// user-info-form-group-->
          <div class="user-info-form-group">
              <div class="user-info-form-group__image">
                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAABUElEQVRIia3WyypFURzH8Q+RKFGimJBMZKBQBmYuD2Bu4lK8gJlXUAwMvYYyMTAwEQZKiULIZcBAKcllsM4pnc46e2nvX/3au7X2/n33Xpd/izRNYRcPuMAm2hLfTdYCvvFT4RscYLYISA/eq0D++hMjWUH1Gf1LaM54pgHLeUGTWQEljeUF9SeCOvOCvhJB73lBh4mgs7yg7kRQV15QeyIo9xwdJ4L2E5+LakAoObU27JX0Ia6p+QzQShEQaBGKaTXIPVqLAsFcBLSYGpC1GMp6ibSfpoKyNIRVPKr+R89YxzSa/hveIAzJZSQ85hesSZyzUZz/E1DpJ8zUggzjLSek7A9MxEA7BUHK3ouBbgsG3f0Nr4/cF6G6GKiwPSGcmrZinR3Yln3qqeVrbGCwMryuskE49YwLlbsPvaWPaBTqXpOwZ15L1zuc4EhY2lX1C/iXuBtRk3hsAAAAAElFTkSuQmCC">
              </div>
-                <input type="text" class="form-control" name="{{ form.surname.name }}" value="{{ usr.surname }}" placeholder="Фамилия">
+                <input type="text" class="form-control" name="{{ form.surname.name }}" value="{% if usr.surname  %}{{ usr.surname }}{% else %}{% endif %}" placeholder="Фамилия">
          </div><!--// user-info-form-group-->
          <div class="user-info-form-group">
              <div class="user-info-form-group__image">
@@ -65,7 +65,7 @@
              <div class="user-info-form-group__image">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAACpklEQVRIiZXWX2iXVRgH8M9+JuvPitnSuVZJ+YccguSViN4soaSL6qarorILQbyS6Z0gXYReKXoRCCJdTJBEJohUgrUIDQuiQokazEyHadtQx1wr0ovzvvm8Z7/f/PmFA8853/M8zznnfc73vC3uj0V4Fa9gCebjKUxgFL/jG3yJQdxpImYFL+Io/iucm2nn8T5amknQgp34p0GwcfyCYdxqMOczdM6W5GEcruM4iPekI8vRg+0YyXwuortRov5s8lW8OdvKAh7Bocz/J7TlE/uySUNY3GSSiH1ZnI8i+QKmAzmG5wPfhg+lbzMpHUsf1uJUaN2Yi+9DrNt4ugz0SbaK10OSZ/Gb+h/986zfXvhsyMY3K7L9Gwa/Dkla8XPmdLnYWV72t4NfDdcCdwI2Zg6vBYcdGbcXcwpuU8YNq+JY4H6FI2FgUipx0lnHkh3CQyFQCy4F/myWaH/gbtQkBSjxLaYKexW6AndIOuISdyT5KXE1SzQZ7NYaFoSBkWC/lDl+YSbagz2ecR3BHqvhyTDwV7BzFbhcJ1GUmZsZtzDYQzVJhUs8GuzWzHEq6y+TlLzErWDPxZrQP1OWYYm4i9Es8NKs/1bWj89DL+aFfj+cdK86LgVynWr5firdD1gufZPIHy+4x/FjnXFbM4eeYrwmlXTkfsCAVFFXcDrjT+GP0P9TkJ/l2eSDYVfrVTUwtnfxdgOuPJ0eGQbChGmsDtzLqjJ0XVKFEtukiiv5K9iNJ/IksEL1RR2RFD2iE8+o/0zPwXOqd7IhNqtufRRvNOMY8FizE3eZedbn8IGZOyTdlx5swVf4+EFW9Y50iet94Anp0bsg6VxeKA+USLH6A/i7QcJGbU+jgPf7/+qSfhx7sVJSjo7Cb0JS7GF8J92hs6oK8T/uAkMTHl2+O5lOAAAAAElFTkSuQmCC">
              </div>
-                <input type="text" class="form-control" name="{{ form.email.name }}" value="{{ usr.email }}" placeholder="E-Mail">
+                <input type="text" class="form-control" name="{{ form.email.name }}" value="{% if usr.email  %}{{ usr.email }}{% else %}{% endif %}" placeholder="E-Mail">
          </div><!--// user-info-form-group-->
 
         <button type="submit" class="btn">сохранить изменения</button>
@@ -81,6 +81,7 @@
 
 </div><!--// container-->
  </form>
+{% include 'footer.html' %}
 
 
 

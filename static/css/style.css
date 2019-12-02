@@ -246,7 +246,7 @@ a {
   transition: all .2s ease-out;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 1px;
   border-bottom: 1px solid #EAEAEA; }
   .menu-wrapper-active {
@@ -541,6 +541,7 @@ a {
   .user-photo__image img {
     border-radius: 50%;
     width: 50px;
+    height: 50px;
     border: 2px solid #ffffff; }
 
 .user-info-form-group {
@@ -564,40 +565,45 @@ a {
 .user-info-form button {
   width: 100%; }
 
+.doctor-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px; }
+
 .doctor-info-item {
-  position: relative;
+  width: 100%;
   border: 2px solid #26537A;
   padding: 3px;
-  margin-bottom: 10px;
-  min-height: 130px; }
-  .doctor-info-item a {
-    position: absolute;
-    text-align: center;
-    right: 10px;
-    bottom: 10px; }
+  margin-bottom: 10px; }
   .doctor-info-item__title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     background: #26537A;
     padding: 10px; }
     .doctor-info-item__title p {
       color: #ffffff;
-      font-size: 18px;
+      font-size: 14px;
       text-transform: uppercase;
-      font-weight: 500; }
-  .doctor-info-item__photo {
-    position: absolute;
-    top: 15px;
-    left: 30px; }
-    .doctor-info-item__photo img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid #26537A; }
+      text-align: center;
+      margin-bottom: 10px; }
+    .doctor-info-item__title a {
+      width: 100%;
+      text-align: center; }
+  .doctor-info-item__photo img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; }
 
 .services {
   background: #EAEAEA;

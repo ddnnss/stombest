@@ -26,30 +26,28 @@
 
 
 <div class="container doctor">
-    {% for d in docs %}
-
-    <div class="doctor-info">
+  <div class="doctor-items">
+        {% for d in docs %}
+       <div class="doctor-info">
         <div class="doctor-info-item">
             <div class="doctor-info-item__title">
-                <p>1 января 1:00</p>
-            </div>
             <div class="doctor-info-item__photo">
                 <img src="{{ d.image.url }}">
-                <p>Доктор<br>{{ d.name }}<br>{{ d.cabinet }}</p>
+                <p>{{ d.name }}<br>{{ d.cabinet }}</p>
             </div>
             <a onclick="apply({{ d.id }})" class="btn">записаться</a>
+            </div>
+
         </div>
     </div><!--// doctor-info-->
+
     {% endfor %}
+  </div>
+
 
 </div><!--// container-->
 
-<div class="footr">
-   <div class="footr-inner">
-       <a href="#"><img style="width: 60px" src="{% static 'img/phone.png' %}" alt=""> </a>
-       <a href="#"><img style="width: 60px" src="{% static 'img/white.png' %}" alt=""> </a>
-   </div>
-</div>
+{% include 'footer.html' %}
 
 
 </body>

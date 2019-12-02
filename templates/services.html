@@ -29,7 +29,7 @@
         <a>Взрослое отделение</a>
     </div>
     <div class="promo-tabs__tab ">
-        <a href="services_child.html">Детское отделение</a>
+        <a href="{% url 'services_child' %}">Детское отделение</a>
     </div>
 </div>
 
@@ -45,13 +45,7 @@
 
 
 
-<div class="footr">
-   <div class="footr-inner">
-       <a href="#"><img style="width: 60px" src="{% static 'img/phone.png' %}" alt=""> </a>
-       <a href="#"><img style="width: 60px" src="{% static 'img/white.png' %}" alt=""> </a>
-   </div>
-</div>
-
+{% include 'footer.html' %}
 
 
 

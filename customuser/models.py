@@ -43,7 +43,7 @@ class User(AbstractUser):
     first_name = None
     last_name = None
     image = models.ImageField('Фото', upload_to='user',blank=True,null=True)
-    name = models.CharField('Имя', max_length=50, blank=False, null=True)
+    name = models.CharField('Имя', max_length=50, blank=True, null=True)
     surname = models.CharField('Фамилия', max_length=50, blank=True, null=True)
     phone = models.CharField('Телефон', max_length=50, blank=True, null=True, unique=True)
     email = models.EmailField('Эл. почта', blank=True, null=True)
