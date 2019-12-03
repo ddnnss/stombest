@@ -14,7 +14,7 @@
 <header class="header ">
     <div class="header-wrapper">
 
-        <a href="{{ request.META.HTTP_REFERER }}">Написать сообщение</a>
+        <a href="/">Написать сообщение</a>
         <div class="mobile-toggle-wrapper">
             <div class="mobile-toggle"></div>
         </div>
@@ -38,7 +38,7 @@
  </div>
     {% for mess in allmsg %}
     <div style="margin-bottom: 10px;">
-        <div style="margin-bottom: 5px; padding: 10px;width: 80%; height: 40px; background: rgba(38,83,122,0.81); margin-left: auto">
+        <div style="margin-bottom: 5px; padding: 10px;width: 80%; background: rgba(38,83,122,0.81); margin-left: auto">
             <p style="color: #ffffff;">Вы написали:<br>
                 {{ mess.message }}
             </p>
