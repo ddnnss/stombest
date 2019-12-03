@@ -107,6 +107,14 @@ def faq(request):
 
     return render(request, 'faq.html', locals())
 
+def message(request):
+    allmsg = Message.objects.filter(client=request.user)
+
+    return render(request, 'message.html', locals())
+
+def message_add(request):
+    Message.objects.create(client=request.user,message=request.GET.get('message'))
+    return HttpResponseRedirect('/message')
 
 def lk(request):
     usr=request.user

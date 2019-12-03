@@ -48,3 +48,8 @@ class Apply(models.Model):
     month = models.ForeignKey(Month, blank=False, null=True, on_delete=models.CASCADE)
     day = models.ForeignKey(Day, blank=False, null=True, on_delete=models.CASCADE)
     time = models.ForeignKey(Time, blank=False, null=True, on_delete=models.CASCADE)
+
+class Message(models.Model):
+    client = models.ForeignKey(User, blank=False, null=True, on_delete=models.CASCADE)
+    message = models.TextField('Вопрос', blank=False, null=True)
+    answer = models.TextField('Ответ', blank=False, null=True)
