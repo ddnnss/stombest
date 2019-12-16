@@ -84,7 +84,11 @@
             }
         });
     }
-
+   document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+        this.classList.toggle('mobile-toggle-active')
+        document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
+    })
 
 </script>
 </html>

@@ -121,3 +121,7 @@ def lk(request):
     docs=Doctor.objects.all()
     form = UpdateForm()
     return render(request, 'lk.html', locals())
+
+def log_out(request):
+    logout(request)
+    return HttpResponseRedirect('/')

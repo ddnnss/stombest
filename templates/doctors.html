@@ -31,9 +31,15 @@
        <div class="doctor-info">
         <div class="doctor-info-item">
             <div class="doctor-info-item__title">
-            <div class="doctor-info-item__photo">
+            <div style="    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;"  class="doctor-info-item__photo">
                 <img src="{{ d.image.url }}">
-                <p>{{ d.name }}<br>{{ d.cabinet }}</p>
+                <p>{{ d.name }}<br>Кабинет : {{ d.cabinet }}<br>
+                {{ d.specialization }}
+                </p>
+
             </div>
 
             <a href="{% url 'doctor_info' d.id %}" class="btn">подробнее</a>
@@ -61,9 +67,10 @@
 
 
 
-    document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+  document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
         this.classList.toggle('mobile-toggle-active')
         document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
     })
 
 </script>

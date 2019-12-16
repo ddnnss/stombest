@@ -28,7 +28,7 @@ urlpatterns = [
    # path('addfav/<id>', views.addfav, name='addfav'),
    # path('delfav/<id>', views.delfav, name='delfav'),
    # path('edit/<id>', views.edit, name='edit'),
-   # path('rent/', views.rent, name='rent'),
+   path('logout/', views.log_out, name='logout'),
    # path('about/', views.about, name='about'),
    # path('post/<slug>', views.post, name='post'),
 

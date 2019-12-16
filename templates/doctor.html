@@ -48,10 +48,8 @@
        </ul>
     </div>
 
-    <button class="accordion">ТАБ 3</button>
-    <div class="panel">
-        <p>ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3ТАБ 3</p>
-    </div>
+
+
 </div> <!-- //service-accordion-->
 
 
@@ -69,6 +67,7 @@
     document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
         this.classList.toggle('mobile-toggle-active')
         document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
     })
 
     var acc = document.getElementsByClassName("accordion");
@@ -92,11 +91,6 @@
 
 
 
-
-    document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
-        this.classList.toggle('mobile-toggle-active')
-        document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
-    })
 
 </script>
 </html>
