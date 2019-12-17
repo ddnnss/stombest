@@ -118,7 +118,7 @@ a {
   max-width: 700px;
   margin: 0 auto;
   padding: 0 10px;
-  height: 100vh;
+  height: 130vh;
   margin-top: 10px; }
 
 .main-overlay {
@@ -164,8 +164,7 @@ a {
     font-size: 16px; }
   .header a {
     position: relative;
-    color: #ffffff;
-     }
+    color: #ffffff; }
     .header a::before {
       position: absolute;
       content: '\1f808';
@@ -289,7 +288,6 @@ a {
   text-transform: uppercase;
   color: #ffffff;
   font-size: 13px;
-  font-family: 'Oswald', sans-serif;
   padding: 10px 5px; }
 
 .form-control {
@@ -417,8 +415,9 @@ a {
   margin-bottom: 10px;
   position: -webkit-sticky;
   position: sticky;
-  top: 41px;
-  z-index: 99; }
+  top: 40px;
+  z-index: 99;
+  border-top: 1px solid #ffffff; }
   .promo-tabs a {
     color: #ffffff;
     font-size: 11px;
@@ -436,11 +435,14 @@ a {
 .footr {
   position: fixed;
   bottom: 0;
-  width: 95%;
-  left: 10px;
+  width: 100%;
   margin: 0 auto;
-  background: transparent;
-  padding: 10px 0px; }
+  background: #ffffff;
+  -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 1px solid #c4c4c4; }
   .footr-inner {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -448,8 +450,25 @@ a {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between; }
-  .footr img {
-    width: 50px; }
+  .footr a {
+    position: relative;
+    font: 9px 'Oswald',sans-serif;
+    color: #26537A;
+    width: 33.33%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    text-align: center;
+    display: block;
+    line-height: 40px; }
+    .footr a:after {
+      position: absolute;
+      content: '';
+      height: 100%;
+      width: 1px;
+      right: 0;
+      background: #c4c4c4; }
+    .footr a:last-child:after {
+      content: none; }
 
 .tns-nav {
   margin-top: 5px;
@@ -538,7 +557,7 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100px; }
+  height: 120px; }
   .user-photo__image {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -588,13 +607,14 @@ a {
 .doctor-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10px; }
+  grid-template-rows: minmax(230px, 1fr);
+  grid-gap: 15px; }
 
 .doctor-info-item {
   width: 100%;
   border: 2px solid #26537A;
   padding: 3px;
-  margin-bottom: 10px; }
+  height: 100%; }
   .doctor-info-item__title {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -606,23 +626,27 @@ a {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     background: #26537A;
-    padding: 10px; }
+    padding: 10px;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
     .doctor-info-item__title p {
       color: #ffffff;
       font-size: 14px;
-      text-transform: uppercase;
       text-align: center;
       margin-bottom: 10px; }
     .doctor-info-item__title a {
       width: 100%;
       text-align: center; }
   .doctor-info-item__photo img {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
+    -o-object-fit: none;
+       object-fit: none;
     border-radius: 50%; }
 
 .services {

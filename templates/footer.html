@@ -1,7 +1,9 @@
 {% load static %}
+
 <div class="footr">
    <div class="footr-inner">
-       <a href="tel:8800800800"><img style="width: 60px" src="{% static 'img/phone.png' %}" alt=""> </a>
-       <a href="{% url 'message' %}"><img style="width: 60px" src="{% static 'img/white.png' %}" alt=""> </a>
+     <a href="tel:8800800800">ПОЗВОНИТЬ НАМ</a>
+         <a href="{% url 'services' %}">ЗАПИСАТЬСЯ НА УСЛУГУ</a>
+         <a href="{% url 'message' %}">НАПИСАТЬ СООБЩЕНИЕ</a>
    </div>
 </div>

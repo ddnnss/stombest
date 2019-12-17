@@ -31,18 +31,22 @@
        <div class="doctor-info">
         <div class="doctor-info-item">
             <div class="doctor-info-item__title">
-            <div style="    display: flex;
+            <div style="height: 100%"  class="doctor-info-item__photo">
+              <a style="    width: 100%;
+    text-align: center;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;"  class="doctor-info-item__photo">
+    justify-content: space-between;
+    height: 100%;" href="{% url 'doctor_info' d.id %}" >
                 <img src="{{ d.image.url }}">
-                <p>{{ d.name }}<br>Кабинет : {{ d.cabinet }}<br>
+                <p>{{ d.name }}<br>
                 {{ d.specialization }}
                 </p>
-
+            </a>
             </div>
 
-            <a href="{% url 'doctor_info' d.id %}" class="btn">подробнее</a>
+
             </div>
 
         </div>

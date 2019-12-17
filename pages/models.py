@@ -93,7 +93,7 @@ class Apply(models.Model):
     time = models.ForeignKey(Time, blank=False, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Запись к врачу : %s ' % self.doc.name
+        return 'Запись к врачу {} от {} телефон {} '.format(self.doc.name, self.client.name,self.client.phone)
 
     class Meta:
         verbose_name = "Запись к врачу"
