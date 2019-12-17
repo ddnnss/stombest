@@ -96,8 +96,8 @@ class Apply(models.Model):
         return 'Запись к врачу : %s ' % self.doc.name
 
     class Meta:
-        verbose_name = "Врач"
-        verbose_name_plural = "Врачи"
+        verbose_name = "Запись к врачу"
+        verbose_name_plural = "Записи к врачам"
 
 class Message(models.Model):
     client = models.ForeignKey(User, blank=False, null=True, on_delete=models.CASCADE)
@@ -105,7 +105,7 @@ class Message(models.Model):
     answer = models.TextField('Ответ', blank=False, null=True)
 
     def __str__(self):
-        return 'Сообщение от  ' % self.client.name
+        return 'Сообщение от {} '.format(self.client.name)
 
     class Meta:
         verbose_name = "Сообщение"
