@@ -55,12 +55,14 @@ def apply_req(request):
     day = request.GET.get('day')
     time = request.GET.get('time')
     service = request.GET.get('service')
-    if doc:
-        Apply.objects.create(doc_id=int(doc),client=request.user,service_id=int(service),day_id=int(day),time_id=int(time),month_id=int(mon))
-    else:
-        Apply.objects.create(client=request.user, service_id=int(service), day_id=int(day),
-                             time_id=int(time), month_id=int(mon))
-
+    try:
+        if doc:
+            Apply.objects.create(doc_id=int(doc),client=request.user,service_id=int(service),day_id=int(day),time_id=int(time),month_id=int(mon))
+        else:
+            Apply.objects.create(client=request.user, service_id=int(service), day_id=int(day),
+                                 time_id=int(time), month_id=int(mon))
+    except:
+        pass
     return HttpResponseRedirect('/')
 
 def update_req(request):

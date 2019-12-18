@@ -1,14 +1,6 @@
 from django.db import models
 from customuser.models import User
 
-class Banner(models.Model):
-    image = models.ImageField("Картинка", blank=False, null=True)
-    def __str__(self):
-        return 'Баннер : %s ' % self.id
-
-    class Meta:
-        verbose_name = "Баннер"
-        verbose_name_plural = "Баннеры"
 
 
 class Month(models.Model):
@@ -93,8 +85,15 @@ class Apply(models.Model):
     time = models.ForeignKey(Time, blank=False, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Запись к врачу {} от {} телефон {} '.format(self.doc.name, self.client.name,self.client.phone)
-
+        try:
+            if self.doc.name:
+                return 'Запись к врачу {} от {} телефон {}'.format(self.doc.name, self.client.name,
+                                                               self.client.phone)
+            else:
+                return 'Запись к врачу  от {} телефон {}'.format( self.client.name,
+                                                               self.client.phone)
+        except:
+            return 'Запись к врачу от пользователя без имени'
     class Meta:
         verbose_name = "Запись к врачу"
         verbose_name_plural = "Записи к врачам"
@@ -110,3 +109,16 @@ class Message(models.Model):
     class Meta:
         verbose_name = "Сообщение"
         verbose_name_plural = "Сообщения"
+
+
+class Banner(models.Model):
+    image = models.ImageField("Картинка", blank=False, null=True)
+    service = models.ForeignKey(Service, blank=True, null=True, on_delete=models.CASCADE,
+                                verbose_name='Ссылается на услугу')
+
+    def __str__(self):
+        return 'Баннер : %s ' % self.id
+
+    class Meta:
+        verbose_name = "Баннер"
+        verbose_name_plural = "Баннеры"

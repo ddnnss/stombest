@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>kl</title>
-  <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="{% static  'css/style.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static  'css/style.css'%}">
 
 </head>
 <body>
@@ -20,41 +20,36 @@
         </div>
 
     </div>
-  {% include 'menu.html' %}
+    {% include 'menu.html' %}
 
 </header>
 
 
 <div class="container doctor">
-  <div class="doctor-items">
+    <div class="doctor-items">
         {% for d in docs %}
-       <div class="doctor-info">
-        <div class="doctor-info-item">
-            <div class="doctor-info-item__title">
-            <div style="height: 100%"  class="doctor-info-item__photo">
-              <a style="    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;" href="{% url 'doctor_info' d.id %}" >
-                <img src="{{ d.image.url }}">
-                <p>{{ d.name }}<br>
-                {{ d.specialization }}
-                </p>
-            </a>
-            </div>
+            <div class="doctor-info">
+                <div class="doctor-info-item">
+                    <div class="doctor-info-item__title">
+                        <div style="height: 100%"  class="doctor-info-item__photo">
+                            <a  href="{% url 'doctor_info' d.id %}" >
+                                <img src="{{ d.image.url }}">
 
+                            </a>
+                        </div>
+                        <a href="{% url 'doctor_info' d.id %}" >
+                            <p>{{ d.name }}</p>
+                            <span>{{ d.specialization }}</span>
+                        </a>
 
-            </div>
+                    </div>
 
-        </div>
-    </div><!--// doctor-info  onclick="apply({#  #}{ d.id }})" -->
+                </div>
+            </div><!--// doctor-info  onclick="apply({#  #}{ d.id }})" -->
 
-    {% endfor %}
-  </div>
-
+        {% endfor %}
+    </div>
+    <div class="bott"></div>
 
 </div><!--// container-->
 
@@ -71,10 +66,10 @@
 
 
 
-  document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+    document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
         this.classList.toggle('mobile-toggle-active')
         document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
-         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
+        document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
     })
 
 </script>

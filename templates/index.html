@@ -39,16 +39,18 @@
 <div class="actions">
     <div class="slider" id="slider" >
         {% for i in banner %}
-        <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center">
+            {% if i.service %}
+            <a href="{% url 'service' i.service.id%}">
+            <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
+            </a>
+            {% else %}
+                <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
 
-        </div>
+            {% endif %}
+
  {% endfor %}
     </div>
 </div>
-
-
-
-
     {% for ap in apply %}
         {% if ap.doc %}
     <div class="user-info">
@@ -66,7 +68,7 @@
         {% endif %}
    {% endfor %}
 
-
+<div class="bott"></div>
 </div>
 
 {% include 'footer.html' %}
