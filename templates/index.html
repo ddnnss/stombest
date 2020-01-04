@@ -95,8 +95,8 @@
         </form>
       <form action="{% url 'reg_req' %}" id="register_form" class="login-form reg-form" method="post">{% csrf_token %}
         <input type="text" class="form-control" name="{{ loginform.phone.name }}" placeholder="Телефон">
-        <input type="password" class="form-control" name="{{ loginform.password1.name }}" placeholder="пароль">
-          <input type="password" class="form-control" name="{{ loginform.password2.name }}" placeholder="пароль">
+        <input type="text" class="form-control" name="{{ loginform.password1.name }}" placeholder="пароль">
+          <input type="text" class="form-control" name="{{ loginform.password2.name }}" placeholder="пароль">
 
             <button type="submit" class="btn">регистрация</button>
 

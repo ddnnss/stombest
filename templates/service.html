@@ -28,43 +28,24 @@
 <div class="service-image">
     <img src="{{ serv.image.url }}">
 </div>
-
-<div class="service-accordion">
-    <button class="accordion">{{ serv.tab1 }}</button>
+<div class="container">
+    <div class="service-accordion">
+     {% for ser in serv.service_set.all %}
+    <button class="accordion">{{ ser.name }} от {{ ser.price }} руб</button>
     <div class="panel">
-        <p>{{ serv.tab1text }}</p>
+        <p>{{ ser.description }}</p>
+    <a class="apply-btn" href="{% url 'apply' ser.id %}">записаться</a>
     </div>
+     {% endfor %}
 
-    <button class="accordion">{{ serv.tab2 }}</button>
-    <div class="panel">
-            <p>{{ serv.tab2text }}</p>
     </div>
-    </div>
-
-    <button class="accordion">{{ serv.tab3 }}</button>
-    <div class="panel">
-            <p>{{ serv.tab3text }}</p>
-    </div>
-    </div>
+ <div class="bott"></div>
 </div> <!-- //service-accordion-->
 
-<div class="container">
-    <div class="service-buttons">
-        {% for ser in serv.service_set.all %}
-        <div style="
-        border-radius: 0;
-        flex-basis: 150px;
-    color: #fff;
-    padding: 10px;" class="service-buttons__button">
-            <p>{{ ser.name }}</p>
-            <p>цена {{ ser.price }} руб</p>
-            <a style="border-radius: 0; width: 100%; text-align: center" href="{% url 'apply' ser.id %}">запись</a>
-        </div>
-        {% endfor %}
 
-    </div>
 
-</div>
+
+
 
 
 {% include 'footer.html' %}

@@ -33,15 +33,9 @@ class Time(models.Model):
 
 class ServiceCat(models.Model):
     name = models.CharField('Категория услуг', max_length=255,blank=False, null=True)
-    ico = models.ImageField("Иконко", blank=False, null=True)
-    image = models.ImageField("Картинка", blank=False, null=True)
-    tab1 = models.CharField('TAB1 название', max_length=255, blank=False, null=True)
-    tab1text = models.CharField('TAB1 текст', max_length=255, blank=False, null=True)
-    tab2 = models.CharField('TAB2 название', max_length=255, blank=False, null=True)
-    tab2text = models.CharField('TAB2 текст', max_length=255, blank=False, null=True)
-    tab3 = models.CharField('TAB3 название', max_length=255, blank=False, null=True)
-    tab3text = models.CharField('TAB3 текст', max_length=255, blank=False, null=True)
-    isChild = models.BooleanField('Детская услуга', default=False)
+    ico = models.ImageField("Иконка для меню", blank=False, null=True)
+    image = models.ImageField("Картинка в описании", blank=False, null=True)
+
     def __str__(self):
         return 'Категория : %s ' % self.name
 
@@ -52,6 +46,7 @@ class ServiceCat(models.Model):
 class Service(models.Model):
     name = models.CharField('Название услуга', max_length=255, blank=False, null=True)
     category = models.ManyToManyField(ServiceCat, blank=False, null=True, verbose_name='Категория услуг')
+    description = models.TextField('Описание услуги', default='')
     price = models.IntegerField('Цена', default=0)
 
     def __str__(self):

@@ -28,7 +28,7 @@ def contact(request):
     return render(request, 'contact.html', locals())
 
 def services(request):
-    serv=ServiceCat.objects.filter(isChild=False)
+    serv=ServiceCat.objects.all()
     return render(request, 'services.html', locals())
 
 def services_child(request):
