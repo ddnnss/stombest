@@ -107,6 +107,7 @@ def todoc(request):
     return HttpResponseRedirect('/')
 
 def faq(request):
+    all_faq = Faq.objects.all()
 
     return render(request, 'faq.html', locals())
 

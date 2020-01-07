@@ -33,7 +33,7 @@ class Time(models.Model):
 
 class ServiceCat(models.Model):
     name = models.CharField('Категория услуг', max_length=255,blank=False, null=True)
-    ico = models.ImageField("Иконка для меню", blank=False, null=True)
+    ico = models.ImageField("Иконка для меню 100x100", blank=False, null=True)
     image = models.ImageField("Картинка в описании", blank=False, null=True)
 
     def __str__(self):
@@ -69,9 +69,9 @@ class SubService(models.Model):
 
 class Doctor(models.Model):
     name = models.CharField('ФИО Доктора', max_length=255,blank=False, null=True)
-    cabinet = models.CharField('Кабинет', max_length=255, blank=False, null=True)
+    cabinet = models.CharField('Кабинет', max_length=255, blank=True, null=True)
     specialization = models.CharField('Специализация', max_length=255, blank=False, null=True)
-    image = models.ImageField("Картинка", blank=False, null=True)
+    image = models.ImageField("Картинка 100x100", blank=False, null=True)
     info = models.CharField('Инфо', max_length=255, blank=False, null=True)
     services = models.ManyToManyField(Service,blank=True,null=True,verbose_name='Предоставляет услуги')
 
@@ -128,3 +128,15 @@ class Banner(models.Model):
     class Meta:
         verbose_name = "Баннер"
         verbose_name_plural = "Баннеры"
+
+
+class Faq(models.Model):
+    question = models.TextField('Вопрос', blank=False, null=True)
+    answer = models.TextField('Ответ', blank=False, null=True)
+
+    def __str__(self):
+        return 'FAQ №{} '.format(self.id)
+
+    class Meta:
+        verbose_name = "FAQ"
+        verbose_name_plural = "FAQ"

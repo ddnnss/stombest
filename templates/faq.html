@@ -27,24 +27,17 @@
 
 <div class="container ">
   <div class="service-accordion">
-    <button class="accordion">Вопрос1</button>
+      {% for faq in all_faq %}
+    <button class="accordion">{{ faq.question }}</button>
     <div class="panel">
-        <p>Ответ</p>
+        <p>{{ faq.answer }}</p>
     </div>
+    {% endfor %}
 
-    <button class="accordion">Вопрос2</button>
-    <div class="panel">
-       <p>Ответ</p>
-    </div>
-
-    <button class="accordion">Вопрос3</button>
-    <div class="panel">
-        <p>Ответ</p>
-    </div>
 </div> <!-- //service-accordion-->
   </div>
 
-
+<div class="bott"></div>
 </div><!--// container-->
 
 {% include 'footer.html' %}
