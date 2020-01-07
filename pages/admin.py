@@ -5,6 +5,7 @@ admin.site.register(Banner)
 
 admin.site.register(Doctor)
 admin.site.register(Service)
+admin.site.register(SubService)
 admin.site.register(ServiceCat)
 admin.site.register(Month)
 admin.site.register(Day)

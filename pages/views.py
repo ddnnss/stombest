@@ -35,13 +35,14 @@ def services_child(request):
     serv = ServiceCat.objects.filter(isChild=True)
 
     return render(request, 'services_child.html', locals())
+
 def service(request,id):
     serv=ServiceCat.objects.get(id=id)
 
     return render(request, 'service.html', locals())
 
 def apply(request,id):
-    serv=Service.objects.get(id=id)
+    serv=SubService.objects.get(id=id)
     months = Month.objects.all()
     days = Day.objects.all()
     times = Time.objects.all()

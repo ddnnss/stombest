@@ -31,10 +31,24 @@
 <div class="container">
     <div class="service-accordion">
      {% for ser in serv.service_set.all %}
-    <button class="accordion">{{ ser.name }} от {{ ser.price }} руб</button>
+    <button class="accordion">{{ ser.name }}</button>
     <div class="panel">
         <p>{{ ser.description }}</p>
-    <a class="apply-btn" href="{% url 'apply' ser.id %}">записаться</a>
+
+            <div style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));margin-bottom: 10px" class="service-buttons">
+                {% for subser in ser.subservice_set.all %}
+                <div style="
+                border-radius: 0;
+                flex-basis: 150px;
+            color: #fff;
+            padding: 10px;" class="service-buttons__button">
+                    <p>{{ subser.name }}</p>
+                    <p>цена {{ subser.price }} руб</p>
+                    <a style="border-radius: 0; width: 100%; text-align: center" href="{% url 'apply' subser.id %}">запись</a>
+                </div>
+                {% endfor %}
+
+            </div>
     </div>
      {% endfor %}
 
