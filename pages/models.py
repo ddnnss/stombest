@@ -121,6 +121,7 @@ class Banner(models.Model):
     image = models.ImageField("Картинка", blank=False, null=True)
     service = models.ForeignKey(Service, blank=True, null=True, on_delete=models.CASCADE,
                                 verbose_name='Ссылается на услугу')
+    url = models.CharField('Ссылка', max_length=255, blank=True,null=True)
 
     def __str__(self):
         return 'Баннер : %s ' % self.id

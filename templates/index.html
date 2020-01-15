@@ -44,8 +44,9 @@
             <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
             </a>
             {% else %}
+                <a href="{{ i.url }}">
                 <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
-
+                </a>
             {% endif %}
 
  {% endfor %}
