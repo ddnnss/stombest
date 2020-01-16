@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>kl</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+</head>
+<body>
+
+<header class="header ">
+    <div class="header-wrapper">
+        <a href="{{ request.META.HTTP_REFERER }}">Запись на услуги</a>
+        <div class="mobile-toggle-wrapper">
+            <div class="mobile-toggle"></div>
+        </div>
+
+    </div>
+   {% include 'menu.html' %}
+</header>
+<div class="main-overlay"></div>
+
+
+<div class="container">
+     <div class="apply">
+     <div class="apply-header">
+         <p>Выберите услугу</p>
+            </div>
+     <div class="apply-form">
+    <form id="apply_form" action="{% url 'apply_req' %}" method="get">
+       <select style="margin-bottom: 10px"  name="ser">
+                <option selected disabled>ВЫБЕРИТЕ УСЛУГУ</option>
+            {% for ser in serv %}
+                  <option value="{{ ser.id }}">{{ ser.name }}</option>
+            {% endfor %}
+            </select>
+      <select style="margin-bottom: 10px"  name="service">
+                <option selected disabled>ВЫБЕРИТЕ УСЛУГУ</option>
+            {% for ser in subservice %}
+                  <option value="{{ ser.id }}">{{ ser.name }}</option>
+            {% endfor %}
+            </select>
+        <div class="apply-form-wrapper">
+
+            <select required name="mon">
+                <option selected disabled>Выберите месяц</option>
+                {% for mon in months %}
+                <option value="{{ mon.id }}">{{ mon.name }}</option>
+                {% endfor %}
+            </select>
+             <select required  name="day">
+                <option selected disabled>Выберите день</option>
+                    {% for day in days %}
+                  <option value="{{ day.id }}">{{day.name}}</option>
+                  {% endfor %}
+            </select>
+             <select  required name="time">
+                <option selected disabled>Выберите время</option>
+                 {% for time in times %}
+                  <option value="{{ time.id }}">{{ time.name }}</option>
+                 {% endfor %}
+            </select>
+        </div>
+        <select  name="doc">
+                <option selected disabled>ЗАПИСАТЬСЯ К КОНКРЕТНОМУ ВРАЧУ</option>
+            {% for doc in docs %}
+                  <option value="{{ doc.id }}">{{ doc.name }}</option>
+            {% endfor %}
+            </select>
+        
+    </form>
+     </div>
+ </div>
+
+    <button style="margin: 0 auto; padding: 10px 30px" class="btn" type="submit" form="apply_form">ОТПРАВИТЬ ЗАЯВКУ</button>
+</div>
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+
+
+
+
+</body>
+<script>
+       document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
+        this.classList.toggle('mobile-toggle-active')
+        document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
+         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
+    })
+</script>
+</html>

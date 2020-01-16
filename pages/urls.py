@@ -18,6 +18,7 @@ urlpatterns = [
    path('lk', views.lk, name='lk'),
    path('contact', views.contact, name='contact'),
    path('apply/<id>', views.apply, name='apply'),
+   path('apply_default/', views.apply_default, name='apply_default'),
    path('apply_req', views.apply_req, name='apply_req'),
    path('update_req', views.update_req, name='update_req'),
    path('faq', views.faq, name='faq'),

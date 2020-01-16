@@ -49,7 +49,15 @@ def apply(request,id):
     docs = Doctor.objects.filter(services=id)
 
     return render(request, 'apply.html', locals())
+def apply_default(request):
+    serv=Service.objects.all()
+    subservice = SubService.objects.all()
+    months = Month.objects.all()
+    days = Day.objects.all()
+    times = Time.objects.all()
+    docs = Doctor.objects.all()
 
+    return render(request, 'apply_default.html', locals())
 def apply_req(request):
     doc=request.GET.get('doc')
     mon = request.GET.get('mon')
