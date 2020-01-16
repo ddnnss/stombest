@@ -5,113 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>kl</title>
-      <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static  'css/style.css'%}">
-     <link rel="stylesheet" href="{% static  'css/tiny-slider.css'%}">
+    <link rel="stylesheet" href="{% static  'css/tiny-slider.css'%}">
 </head>
 <body>
 {% if request.user.is_authenticated %}
     <header class="header ">
-    <div class="header-wrapper">
-        <p>Главная</p>
-        <div class="mobile-toggle-wrapper">
-            <div class="mobile-toggle"></div>
+        <div class="header-wrapper">
+            <p>Главная</p>
+            <div class="mobile-toggle-wrapper">
+                <div class="mobile-toggle"></div>
+            </div>
+
         </div>
+        {% include 'menu.html' %}
 
+    </header>
+    <div class="main-overlay"></div>
+    <div class="promo-tabs">
+        <div class="promo-tabs__tab tab-active">
+            <a href="#">Акции и Скидки</a>
+        </div>
+        <div class="promo-tabs__tab ">
+            <a href="#">Предложения для Вас</a>
+        </div>
     </div>
-   {% include 'menu.html' %}
-
-</header>
-<div class="main-overlay"></div>
- <div class="promo-tabs">
-    <div class="promo-tabs__tab tab-active">
-    <a href="#">Акции и Скидки</a>
+    <div class="actions">
     </div>
-       <div class="promo-tabs__tab ">
-        <a href="#">Предложения для Вас</a>
-    </div>
- </div>
-<div class="actions">
+    <div class="container">
 
-</div>
-<div class="container">
-
-<div class="actions">
-    <div class="slider" id="slider" >
-        {% for i in banner %}
-            {% if i.service %}
-            <a href="{% url 'service' i.service.id%}">
-            <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
-            </a>
-            {% else %}
-                <a href="{{ i.url }}">
-                <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
-                </a>
-            {% endif %}
-
- {% endfor %}
-    </div>
-</div>
-    {% for ap in apply %}
-
-    <div class="user-info">
-        <div class="user-info-item">
-            <div class="user-info-item__title">
-                <p>вы записаны {% if ap.isApprove %}<span style="font-size: 17px;line-height: 0px;">&#9745;</span>{% endif %}</p>
-                {% if ap.isApprove %}
-                   <p>{{ ap.applyTime }}</p>
+        <div class="actions">
+            <div class="slider" id="slider" >
+                {% for i in banner %}
+                    {% if i.service %}
+                        <a href="{% url 'service' i.service.id%}">
+                            <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
+                        </a>
                     {% else %}
-                <p>{{ ap.month.name }} {{ ap.day.name }} {{ ap.time.name }}</p>
-                {% endif %}
-            </div>
-            <div class="user-info-item__description">
-                {% if ap.doc %}
-                <p>Доктор<br>{{ ap.doc.name }}<br>{{ ap.doc.cabinet }}</p>
-                 {% endif %}
-                <p>{{ ap.service.name }}</p>
+                        <a href="{{ i.url }}">
+                            <div class="slider-item" style="background: url({{ i.image.url }}) no-repeat center"></div>
+                        </a>
+                    {% endif %}
+
+                {% endfor %}
             </div>
         </div>
-    </div><!--// user-info-->
-
-   {% endfor %}
-
-<div class="bott"></div>
-</div>
-
-{% include 'footer.html' %}
-
-
-
-
-
-
-
+        {% for ap in apply %}
+            <div class="user-info">
+                <div class="user-info-item">
+                    <div class="user-info-item__title">
+                        <p>вы записаны {% if ap.isApprove %}
+                            <span style="font-size: 17px;line-height: 0;">&#9745;</span>{% endif %}
+                        </p>
+                        {% if ap.isApprove %}
+                            <p>{{ ap.applyTime | date}} {{ ap.applyTime |date:"G:i:s" }}</p>
+                        {% else %}
+                            <p>{{ ap.month.name }} {{ ap.day.name }} {{ ap.time.name }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="user-info-item__description">
+                        {% if ap.doc %}
+                            <p>Доктор<br>{{ ap.doc.name }}<br>{{ ap.doc.cabinet }}</p>
+                        {% endif %}
+                        <p>{{ ap.service.name }}</p>
+                    </div>
+                </div>
+            </div><!--// user-info-->
+        {% endfor %}
+        <div class="bott"></div>
+    </div>
+    {% include 'footer.html' %}
 {% else %}
- <section class="login-register">
+    <section class="login-register">
 
-    <img class="logo" src="https://www.stombest.ru/images/logo.png" alt="">
+        <img class="logo" src="https://www.stombest.ru/images/logo.png" alt="">
 
         <form action="{% url 'login_req' %}" id="login_form" class="login-form login-form-active" method="post">{% csrf_token %}
-        <input type="text" class="form-control" name="phone" placeholder="Телефон">
-        <input type="password" class="form-control" name="password" placeholder="пароль">
+            <input type="text" class="form-control" name="phone" placeholder="Телефон">
+            <input type="password" class="form-control" name="password" placeholder="пароль">
 
             <button type="submit" class="btn" >вход</button>
             <a href="javascript:void(0)" onclick="changeForm()" class="btn">регистрация</a>
 
 
         </form>
-      <form action="{% url 'reg_req' %}" id="register_form" class="login-form reg-form" method="post">{% csrf_token %}
-        <input type="text" class="form-control" name="{{ loginform.phone.name }}" placeholder="Телефон">
-        <input type="text" class="form-control" name="{{ loginform.password1.name }}" placeholder="пароль">
-          <input type="text" class="form-control" name="{{ loginform.password2.name }}" placeholder="пароль">
+        <form action="{% url 'reg_req' %}" id="register_form" class="login-form reg-form" method="post">{% csrf_token %}
+            <input type="text" class="form-control" name="{{ loginform.phone.name }}" placeholder="Телефон">
+            <input type="text" class="form-control" name="{{ loginform.password1.name }}" placeholder="пароль">
+            <input type="text" class="form-control" name="{{ loginform.password2.name }}" placeholder="пароль">
 
             <button type="submit" class="btn">регистрация</button>
 
 
 
-    </form>
+        </form>
 
-</section>
+    </section>
 {% endif %}
 
 
@@ -177,7 +167,7 @@
     }
 
 
- function changeForm() {
+    function changeForm() {
         let loginForm = document.getElementById('login_form')
         let regForm = document.getElementById('register_form')
 
@@ -191,7 +181,7 @@
     document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
         this.classList.toggle('mobile-toggle-active')
         document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
-         document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
+        document.getElementsByClassName('main-overlay')[0].classList.toggle('main-overlay__active')
     })
 
 </script>
