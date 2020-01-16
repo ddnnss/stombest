@@ -57,7 +57,7 @@
     <div class="user-info">
         <div class="user-info-item">
             <div class="user-info-item__title">
-                <p>вы записаны</p>
+                <p>вы записаны {% if ap.isApprove %}<span style="font-size: 17px;line-height: 0px;">&#9745;</span>{% endif %}</p>
                 {% if ap.isApprove %}
                    <p>{{ ap.applyTime }}</p>
                     {% else %}

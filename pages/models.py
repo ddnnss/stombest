@@ -7,7 +7,6 @@ class Month(models.Model):
     name = models.CharField('Месяц', max_length=255, blank=False, null=True)
     def __str__(self):
         return 'Месяц : %s ' % self.name
-
     class Meta:
         verbose_name = "Месяц"
         verbose_name_plural = "Месяцы"
@@ -16,7 +15,6 @@ class Day(models.Model):
     name = models.CharField('День', max_length=255, blank=False, null=True)
     def __str__(self):
         return 'День : %s ' % self.name
-
     class Meta:
         verbose_name = "День"
         verbose_name_plural = "Дни"
@@ -33,7 +31,7 @@ class Time(models.Model):
 
 class ServiceCat(models.Model):
     name = models.CharField('Категория услуг', max_length=255,blank=False, null=True)
-    ico = models.ImageField("Иконка для меню 100x100", blank=False, null=True)
+    ico = models.ImageField("Иконка для меню 60x60", blank=False, null=True)
     image = models.ImageField("Картинка в описании", blank=False, null=True)
 
     def __str__(self):
@@ -58,7 +56,7 @@ class Service(models.Model):
 class SubService(models.Model):
     name = models.CharField('Название разновидности услуги', max_length=255, blank=False, null=True)
     category = models.ForeignKey(Service, blank=False, on_delete=models.CASCADE, null=True, verbose_name='Для услуги')
-    price = models.IntegerField('Цена', default=0)
+    price = models.CharField('Цена', max_length=10, blank=False, null=True)
 
     def __str__(self):
         return 'Услуга : %s ' % self.name
@@ -86,9 +84,9 @@ class Apply(models.Model):
     doc = models.ForeignKey(Doctor,blank=True,null=True, on_delete=models.CASCADE)
     client = models.ForeignKey(User, blank=False, null=True, on_delete=models.CASCADE)
     service = models.ForeignKey(SubService, blank=False, null=True, on_delete=models.CASCADE)
-    month = models.ForeignKey(Month, blank=False, null=True, on_delete=models.CASCADE)
-    day = models.ForeignKey(Day, blank=False, null=True, on_delete=models.CASCADE)
-    time = models.ForeignKey(Time, blank=False, null=True, on_delete=models.CASCADE)
+    month = models.ForeignKey(Month, blank=True, null=True, on_delete=models.CASCADE)
+    day = models.ForeignKey(Day, blank=True, null=True, on_delete=models.CASCADE)
+    time = models.ForeignKey(Time, blank=True, null=True, on_delete=models.CASCADE)
     applyTime = models.DateTimeField('Точное время заявки', blank=True, null=True)
     isApprove = models.BooleanField('Подтверждена?', default=False)
 
