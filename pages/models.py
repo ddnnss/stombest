@@ -89,6 +89,8 @@ class Apply(models.Model):
     month = models.ForeignKey(Month, blank=False, null=True, on_delete=models.CASCADE)
     day = models.ForeignKey(Day, blank=False, null=True, on_delete=models.CASCADE)
     time = models.ForeignKey(Time, blank=False, null=True, on_delete=models.CASCADE)
+    applyTime = models.DateTimeField('Точное время заявки', blank=True, null=True)
+    isApprove = models.BooleanField('Подтверждена?', default=False)
 
     def __str__(self):
         try:

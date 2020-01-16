@@ -53,20 +53,26 @@
     </div>
 </div>
     {% for ap in apply %}
-        {% if ap.doc %}
+
     <div class="user-info">
         <div class="user-info-item">
             <div class="user-info-item__title">
                 <p>вы записаны</p>
+                {% if ap.isApprove %}
+                   <p>{{ ap.applyTime }}</p>
+                    {% else %}
                 <p>{{ ap.month.name }} {{ ap.day.name }} {{ ap.time.name }}</p>
+                {% endif %}
             </div>
             <div class="user-info-item__description">
+                {% if ap.doc %}
                 <p>Доктор<br>{{ ap.doc.name }}<br>{{ ap.doc.cabinet }}</p>
+                 {% endif %}
                 <p>{{ ap.service.name }}</p>
             </div>
         </div>
     </div><!--// user-info-->
-        {% endif %}
+
    {% endfor %}
 
 <div class="bott"></div>
