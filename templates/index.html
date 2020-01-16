@@ -87,28 +87,15 @@
 
             <button type="submit" class="btn" >вход</button>
             <a href="javascript:void(0)" onclick="changeForm()" class="btn">регистрация</a>
-
-
         </form>
         <form action="{% url 'reg_req' %}" id="register_form" class="login-form reg-form" method="post">{% csrf_token %}
             <input type="text" class="form-control" name="{{ loginform.phone.name }}" placeholder="Телефон">
             <input type="text" class="form-control" name="{{ loginform.password1.name }}" placeholder="пароль">
             <input type="text" class="form-control" name="{{ loginform.password2.name }}" placeholder="пароль">
-
             <button type="submit" class="btn">регистрация</button>
-
-
-
         </form>
-
     </section>
 {% endif %}
-
-
-
-
-
-
 </body>
 <script src="{% static 'js/tiny-slider.js' %} "></script>
 <script>
@@ -165,19 +152,12 @@
             if (isTestPage && initFns[i]) { initFns[i](); }
         }
     }
-
-
     function changeForm() {
         let loginForm = document.getElementById('login_form')
         let regForm = document.getElementById('register_form')
-
         loginForm.classList.remove('login-form-active')
         regForm.classList.add('reg-form-active')
-
     }
-
-
-
     document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
         this.classList.toggle('mobile-toggle-active')
         document.getElementsByClassName('menu-wrapper')[0].classList.toggle('menu-wrapper-active')
