@@ -13,6 +13,8 @@ def index(request):
         apply = Apply.objects.filter(client=request.user)
     banner = Banner.objects.all()
     loginform = SignUpForm()
+    msg = Message.objects.last()
+
     return render(request, 'index.html', locals())
 
 def doc(request):
@@ -25,6 +27,7 @@ def doctor_info(request,id):
     return render(request, 'doctor.html', locals())
 
 def contact(request):
+    contactInfo = Contact.objects.first()
     return render(request, 'contact.html', locals())
 
 def services(request):
@@ -121,7 +124,13 @@ def faq(request):
 
 def message(request):
     allmsg = Message.objects.filter(client=request.user)
-
+    try:
+        msg = Message.objects.last()
+        if msg.answer:
+            msg.isRead = True
+            msg.save()
+    except:
+        pass
     return render(request, 'message.html', locals())
 
 def message_add(request):

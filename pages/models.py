@@ -107,7 +107,8 @@ class Apply(models.Model):
 class Message(models.Model):
     client = models.ForeignKey(User, blank=False, null=True, on_delete=models.CASCADE)
     message = models.TextField('Вопрос', blank=False, null=True)
-    answer = models.TextField('Ответ', blank=False, null=True)
+    answer = models.TextField('Ответ', blank=True, null=True)
+    isRead = models.BooleanField('Прочитано ?', default=False)
 
     def __str__(self):
         return 'Сообщение от {} '.format(self.client.name)
@@ -141,3 +142,18 @@ class Faq(models.Model):
     class Meta:
         verbose_name = "FAQ"
         verbose_name_plural = "FAQ"
+
+
+class Contact(models.Model):
+    address = models.CharField('Адрес', max_length=255,blank=False,null=True)
+    phone1 = models.CharField('Телефон1', max_length=255, blank=False, null=True)
+    phone2 = models.CharField('Телефон2', max_length=255, blank=False, null=True)
+    email = models.CharField('Email', max_length=255, blank=False, null=True)
+    time = models.CharField('Время работы', max_length=255, blank=False, null=True)
+
+    def __str__(self):
+        return 'Контакты'
+
+    class Meta:
+        verbose_name = "Контакты"
+        verbose_name_plural = "Контакты"

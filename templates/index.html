@@ -51,6 +51,20 @@
                 {% endfor %}
             </div>
         </div>
+    {% if msg.answer and not msg.isRead %}
+     <div class="user-info">
+        <div class="user-info-item">
+            <div class="user-info-item__title">
+                <p>У Вас новое сообщение</p>
+
+            </div>
+            <div class="user-info-item__description">
+                <p>{{ msg.answer }}</p>
+
+            </div>
+        </div>
+    </div><!--// user-info-->
+        {% endif %}
         {% for ap in apply %}
             <div class="user-info">
                 <div class="user-info-item">
@@ -84,6 +98,10 @@
         <form action="{% url 'login_req' %}" id="login_form" class="login-form login-form-active" method="post">{% csrf_token %}
             <input type="text" class="form-control" name="phone" placeholder="Телефон">
             <input type="password" class="form-control" name="password" placeholder="пароль">
+            <label style="margin-bottom: 10px; color: #cccccc; display: flex;  align-items: center;" for="show_pass">
+                Показать пароль
+                 <input style="width: 20px; height: 20px; margin-left: 20px;" id="show_pass" type="checkbox" onchange="showPassword(this)" >
+            </label>
 
             <button type="submit" class="btn" >вход</button>
             <a href="javascript:void(0)" onclick="changeForm()" class="btn">регистрация</a>
@@ -99,7 +117,15 @@
 </body>
 <script src="{% static 'js/tiny-slider.js' %} "></script>
 <script>
-
+    function showPassword(el) {
+        let field = document.getElementsByName('password')[0]
+        if (el.checked){
+            field.setAttribute('type','text')
+        }
+        else {
+           field.setAttribute('type','password')
+        }
+    }
     var mobile = 'true',
         isTestPage = false,
         isDemoPage = true,
