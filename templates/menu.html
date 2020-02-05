@@ -1,33 +1,47 @@
 {% load static %}
 <div class="menu-wrapper">
 
-        <div class="menu-item">
-           <img src="{% static 'img/LK.png' %}">
-           <a style="margin:0 " href="{% url 'lk' %}">Личный кабинет</a>
-        </div>
-        <div class="menu-item">
-            <img src="{% static 'img/doctors.png' %}">
-            <a style="margin:0 " href="{% url 'doc' %}">Врачи</a>
-        </div>
-        <div class="menu-item">
-           <img src="{% static 'img/servises.png' %}">
-            <a style="margin:0 " href="{% url 'services' %}">Услуги</a>
-        </div>
-        <div class="menu-item">
-            <img src="{% static 'img/home.png' %}">
-            <a style="margin:0 " href="{% url 'index' %}">Акции</a>
-        </div>
-
-        <div class="menu-item">
-           <img src="{% static 'img/contacts.png' %}">
-            <a style="margin:0 " href="{% url 'contact' %}">Контакты</a>
-        </div>
-          <div class="menu-item">
-             <img src="{% static 'img/faq.png' %}">
-            <a style="margin:0 " href="{% url 'faq' %}">Инструкция</a>
-        </div>
-
-
-
-
+    <div class="menu-item">
+        <a style="margin:0 " href="{% url 'lk' %}">
+            <img src="{% static 'img/LK.png' %}">
+        </a>
+        <a style="margin:0 " href="{% url 'lk' %}">Личный кабинет</a>
     </div>
+    <div class="menu-item">
+        <a style="margin:0 " href="{% url 'doc' %}">
+            <img src="{% static 'img/doctors.png' %}">
+        </a>
+       <a style="margin:0 " href="{% url 'doc' %}">Врачи</a>
+    </div>
+
+
+    <div class="menu-item">
+        <a style="margin:0 " href="{% url 'services' %}">
+            <img src="{% static 'img/servises.png' %}">
+        </a>
+        <a style="margin:0 " href="{% url 'services' %}">Услуги</a>
+    </div>
+    <div class="menu-item">
+        <a style="margin:0 " href="{% url 'index' %}">
+            <img src="{% static 'img/home.png' %}">
+        </a>
+        <a style="margin:0 " href="{% url 'index' %}">Акции</a>
+    </div>
+
+    <div class="menu-item">
+        <a style="margin:0 " href="{% url 'contact' %}">
+            <img src="{% static 'img/contacts.png' %}">
+        </a>
+        <a style="margin:0 " href="{% url 'contact' %}">Контакты</a>
+    </div>
+    <div class="menu-item">
+        <a style="margin:0 " href="{% url 'faq' %}">
+            <img src="{% static 'img/faq.png' %}">
+        </a>
+        <a style="margin:0 " href="{% url 'faq' %}">Инструкция</a>
+    </div>
+
+
+
+
+</div>

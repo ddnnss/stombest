@@ -32,25 +32,32 @@
  </div>
 
 <div class="container">
+<p>{{ doc.info }}</p>
 
-<div class="service-accordion">
-    <button class="accordion">Информация</button>
-    <div class="panel">
-        <p>{{ doc.info }}</p>
-    </div>
-
-    <button class="accordion">Оказываемые услуги</button>
-    <div class="panel">
-       <ul>
+  <ul>
            {% for ser in doc.services.all %}
            <li>{{ ser.name }} | Цена: {{ ser.price }} - <a href="{% url 'service' ser.category.get.id %}">Подробнее</a></li>
            {% endfor %}
        </ul>
-    </div>
 
-
-
-</div> <!-- //service-accordion-->
+{#<div class="service-accordion">#}
+{#    <button class="accordion">Информация</button>#}
+{#    <div class="panel">#}
+{#        <p>{{ doc.info }}</p>#}
+{#    </div>#}
+{##}
+{#    <button class="accordion">Оказываемые услуги</button>#}
+{#    <div class="panel">#}
+{#       <ul>#}
+{#           {% for ser in doc.services.all %}#}
+{#           <li>{{ ser.name }} | Цена: {{ ser.price }} - <a href="{% url 'service' ser.category.get.id %}">Подробнее</a></li>#}
+{#           {% endfor %}#}
+{#       </ul>#}
+{#    </div>#}
+{##}
+{##}
+{##}
+{#</div> <!-- //service-accordion-->#}
 
 
 
