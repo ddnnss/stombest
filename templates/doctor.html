@@ -37,7 +37,7 @@
 <h3 style="margin-bottom: 10px;color: #26537A;">Оказываемые услуги</h3>
   <ul>
            {% for ser in doc.services.all %}
-           <li>{{ ser.name }} | Цена: {{ ser.price }} - <a href="{% url 'service' ser.category.get.id %}">Подробнее</a></li>
+           <li>{{ ser.name }} | <a href="{% url 'service' ser.id %}">Подробнее</a></li>
            {% endfor %}
        </ul>
 

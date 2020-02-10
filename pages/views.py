@@ -24,6 +24,7 @@ def doc(request):
 
 def doctor_info(request,id):
     doc = Doctor.objects.get(id=id)
+
     return render(request, 'doctor.html', locals())
 
 def contact(request):

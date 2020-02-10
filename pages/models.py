@@ -71,7 +71,7 @@ class Doctor(models.Model):
     specialization = models.CharField('Специализация', max_length=255, blank=False, null=True)
     image = models.ImageField("Картинка 100x100", blank=False, null=True)
     info = models.CharField('Инфо', max_length=255, blank=False, null=True)
-    services = models.ManyToManyField(Service,blank=True,null=True,verbose_name='Предоставляет услуги')
+    services = models.ManyToManyField(ServiceCat,blank=True,null=True,verbose_name='Предоставляет услуги')
 
     def __str__(self):
         return 'Врач : %s ' % self.name
