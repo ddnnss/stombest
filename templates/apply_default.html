@@ -31,18 +31,13 @@
             </div>
      <div class="apply-form">
     <form id="apply_form" action="{% url 'apply_req' %}" method="get">
-       <select style="margin-bottom: 10px"  name="ser">
+       <select style="margin-bottom: 10px"  name="service">
                 <option selected disabled>ВЫБЕРИТЕ УСЛУГУ</option>
             {% for ser in serv %}
                   <option value="{{ ser.id }}">{{ ser.name }}</option>
             {% endfor %}
             </select>
-      <select style="margin-bottom: 10px"  name="service">
-                <option selected disabled>ВЫБЕРИТЕ УСЛУГУ</option>
-            {% for ser in subservice %}
-                  <option value="{{ ser.id }}">{{ ser.name }}</option>
-            {% endfor %}
-            </select>
+
         <div class="apply-form-wrapper">
 
             <select required name="mon">
