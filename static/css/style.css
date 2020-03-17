@@ -900,3 +900,7 @@ button {
     padding: 10px 0;
     margin: 10px 0;
 }
+
+textarea::placeholder{
+  font: 12px 'Oswald',sans-serif;
+}

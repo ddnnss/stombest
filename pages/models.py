@@ -32,7 +32,7 @@ class Time(models.Model):
 class ServiceCat(models.Model):
     name = models.CharField('Категория услуг', max_length=255,blank=False, null=True)
     ico = models.ImageField("Иконка для меню 60x60", blank=False, null=True)
-    image = models.ImageField("Картинка в описании", blank=False, null=True)
+    image = models.ImageField("Картинка в описании (500x300)", blank=False, null=True)
 
     def __str__(self):
         return 'Категория : %s ' % self.name
@@ -121,7 +121,7 @@ class Message(models.Model):
 
 
 class Banner(models.Model):
-    image = models.ImageField("Картинка", blank=False, null=True)
+    image = models.ImageField("Картинка (400x200)", blank=False, null=True)
     service = models.ForeignKey(Service, blank=True, null=True, on_delete=models.CASCADE,
                                 verbose_name='Ссылается на услугу')
     url = models.CharField('Ссылка', max_length=255, blank=True,null=True)
