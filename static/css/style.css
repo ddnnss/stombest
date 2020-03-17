@@ -882,7 +882,7 @@ button {
   .apply-form-wrapper {
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px; }
   .apply-form select {
     height: 30px;

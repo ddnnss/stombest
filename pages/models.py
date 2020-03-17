@@ -59,7 +59,7 @@ class SubService(models.Model):
     price = models.CharField('Цена', max_length=10, blank=False, null=True)
 
     def __str__(self):
-        return 'Услуга : %s ' % self.name
+        return 'Разновидность услуги : %s ' % self.name
 
     class Meta:
         verbose_name = "Разновидность услуги"
@@ -83,10 +83,12 @@ class Doctor(models.Model):
 class Apply(models.Model):
     doc = models.ForeignKey(Doctor,blank=True,null=True, on_delete=models.CASCADE)
     client = models.ForeignKey(User, blank=False, null=True, on_delete=models.CASCADE)
-    service = models.ForeignKey(SubService, blank=False, null=True, on_delete=models.CASCADE)
+    service = models.ForeignKey(SubService, blank=True, null=True, on_delete=models.CASCADE)
+    servicee = models.ForeignKey(Service, blank=True, null=True, on_delete=models.CASCADE)
     month = models.ForeignKey(Month, blank=True, null=True, on_delete=models.CASCADE)
     day = models.ForeignKey(Day, blank=True, null=True, on_delete=models.CASCADE)
     time = models.ForeignKey(Time, blank=True, null=True, on_delete=models.CASCADE)
+    comment = models.TextField('Комментарий', blank=True,null=True)
     applyTime = models.DateTimeField('Точное время заявки', blank=True, null=True)
     isApprove = models.BooleanField('Подтверждена?', default=False)
 

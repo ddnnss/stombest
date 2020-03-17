@@ -45,19 +45,20 @@
                   <option value="{{ day.id }}">{{day.name}}</option>
                   {% endfor %}
             </select>
-             <select  required name="time">
-                <option selected disabled>Выберите время</option>
-                 {% for time in times %}
-                  <option value="{{ time.id }}">{{ time.name }}</option>
-                 {% endfor %}
-            </select>
+{#             <select  required name="time">#}
+{#                <option selected disabled>Выберите время</option>#}
+{#                 {% for time in times %}#}
+{#                  <option value="{{ time.id }}">{{ time.name }}</option>#}
+{#                 {% endfor %}#}
+{#            </select>#}
         </div>
-        <select  name="doc">
-                <option selected disabled>ЗАПИСАТЬСЯ К КОНКРЕТНОМУ ВРАЧУ</option>
+        <select   name="doc" style="margin-bottom: 10px">
+                <option selected value="0">ЗАПИСАТЬСЯ К ЛЮБОМУ ВРАЧУ</option>
             {% for doc in docs %}
                   <option value="{{ doc.id }}">{{ doc.name }}</option>
             {% endfor %}
             </select>
+        <textarea style="width: 100%;box-sizing: border-box" name="comment" cols="30" rows="10" placeholder="Ваш комментарий"></textarea>
         <input type="hidden" name="service" value="{{ serv.id }}">
     </form>
      </div>

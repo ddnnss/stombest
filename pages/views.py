@@ -1,4 +1,6 @@
-from django.http import HttpResponseRedirect
+import json
+
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from customuser.forms import *
 from .models import *
@@ -47,33 +49,62 @@ def service(request,id):
 
 def apply(request,id):
     serv=SubService.objects.get(id=id)
+    cat = serv.category.category.all()
+    print(cat)
     months = Month.objects.all()
     days = Day.objects.all()
     times = Time.objects.all()
-    docs = Doctor.objects.filter(services=id)
+    docs = Doctor.objects.filter(services__in=cat)
+    print(docs)
 
     return render(request, 'apply.html', locals())
 def apply_default(request):
     serv=Service.objects.all()
+    print(serv.filter(id=14))
+    print(Doctor.objects.filter(services__in=serv.first().category.all()))
     subservice = SubService.objects.all()
     months = Month.objects.all()
     days = Day.objects.all()
-    times = Time.objects.all()
-    docs = Doctor.objects.all()
+    # times = Time.objects.all()
+    # docs = Doctor.objects.all()
 
     return render(request, 'apply_default.html', locals())
 def apply_req(request):
+    print(request.GET)
     doc=request.GET.get('doc')
     mon = request.GET.get('mon')
     day = request.GET.get('day')
-    time = request.GET.get('time')
+    # time = request.GET.get('time')
     service = request.GET.get('service')
+    comment = request.GET.get('comment')
     try:
-        if doc:
-            Apply.objects.create(doc_id=int(doc),client=request.user,service_id=int(service),day_id=int(day),time_id=int(time),month_id=int(mon))
+        if doc != '0':
+            print('doc yes')
+            Apply.objects.create(doc_id=int(doc),client=request.user,service_id=int(service),day_id=int(day),comment=comment,month_id=int(mon))
         else:
+            print('doc no')
             Apply.objects.create(client=request.user, service_id=int(service), day_id=int(day),
-                                 time_id=int(time), month_id=int(mon))
+                                 comment=comment, month_id=int(mon))
+    except:
+        pass
+    return HttpResponseRedirect('/')
+
+def apply_default_req(request):
+    print(request.GET)
+    doc=request.GET.get('doc')
+    mon = request.GET.get('mon')
+    day = request.GET.get('day')
+    # time = request.GET.get('time')
+    service = request.GET.get('service')
+    comment = request.GET.get('comment')
+    try:
+        if doc != '0':
+            print('doc yes')
+            Apply.objects.create(doc_id=int(doc),client=request.user,servicee_id=int(service),day_id=int(day),comment=comment,month_id=int(mon))
+        else:
+            print('doc no')
+            Apply.objects.create(client=request.user, servicee_id=int(service), day_id=int(day),
+                                 comment=comment, month_id=int(mon))
     except:
         pass
     return HttpResponseRedirect('/')
@@ -147,3 +178,17 @@ def lk(request):
 def log_out(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def get_doc(request):
+    body = json.loads(request.body)
+    return_dict = {}
+    print(body)
+    serv = Service.objects.get(id=body['id'])
+    print(serv)
+    print(Doctor.objects.filter(services__in=serv.category.all()))
+    return_dict['docs'] = list()
+    docs = Doctor.objects.filter(services__in=serv.category.all())
+    for doc in docs:
+        return_dict['docs'].append({'id': doc.id,
+                                             'name': doc.name})
+    return JsonResponse(return_dict)

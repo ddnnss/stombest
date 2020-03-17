@@ -30,8 +30,9 @@
          <p>Выберите услугу</p>
             </div>
      <div class="apply-form">
-    <form id="apply_form" action="{% url 'apply_req' %}" method="get">
-       <select style="margin-bottom: 10px"  name="service">
+    <form id="apply_form" action="{% url 'apply_default_req' %}" method="get">
+    {% csrf_token %}
+       <select id="category" style="margin-bottom: 10px"  name="service">
                 <option selected disabled>ВЫБЕРИТЕ УСЛУГУ</option>
             {% for ser in serv %}
                   <option value="{{ ser.id }}">{{ ser.name }}</option>
@@ -52,19 +53,21 @@
                   <option value="{{ day.id }}">{{day.name}}</option>
                   {% endfor %}
             </select>
-             <select  required name="time">
-                <option selected disabled>Выберите время</option>
-                 {% for time in times %}
-                  <option value="{{ time.id }}">{{ time.name }}</option>
-                 {% endfor %}
-            </select>
+{#             <select  required name="time">#}
+{#                <option selected disabled>Выберите время</option>#}
+{#                 {% for time in times %}#}
+{#                  <option value="{{ time.id }}">{{ time.name }}</option>#}
+{#                 {% endfor %}#}
+{#            </select>#}
         </div>
-        <select  name="doc">
-                <option selected disabled>ЗАПИСАТЬСЯ К КОНКРЕТНОМУ ВРАЧУ</option>
-            {% for doc in docs %}
-                  <option value="{{ doc.id }}">{{ doc.name }}</option>
-            {% endfor %}
+        <select id="doc_select"  name="doc" style="margin-bottom: 10px">
+                <option selected value="0">ЗАПИСАТЬСЯ К ЛЮБОМУ ВРАЧУ</option>
+{#            {% for doc in docs %}#}
+{#                  <option value="{{ doc.id }}">{{ doc.name }}</option>#}
+{#            {% endfor %}#}
             </select>
+     <textarea style="width: 100%;box-sizing: border-box" name="comment" cols="30" rows="10" placeholder="Ваш комментарий"></textarea>
+
 
     </form>
      </div>
@@ -81,12 +84,51 @@
 
 
 
+
 {% include 'footer.html' %}
 
 
 
 
 </body>
+<script>
+     let catSelect = document.getElementById('category')
+     let docSelect = document.getElementById('doc_select')
+     let csrfmiddlewaretoken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+      catSelect.addEventListener('change',()=>{
+
+                [].forEach.call(document.querySelectorAll('.doc-name'),function(e){
+                    e.parentNode.removeChild(e);
+                });
+                getSubcat({
+                    id: catSelect.options[catSelect.selectedIndex].value})
+
+            })
+
+      function getSubcat(opts) {
+                 console.log(opts)
+                fetch('/get_doc', {
+                    method: 'post',
+                    body: JSON.stringify(opts),
+                    headers: { "X-CSRFToken": csrfmiddlewaretoken },
+                    credentials: 'same-origin'
+                }).then(res=>res.json())
+                    .then(res => {
+                        for (x of res['docs']){
+                            console.log(x['id'],x['name'])
+                            var option = document.createElement("option")
+                            option.text = x['name']
+                            option.value = x['id']
+                            option.classList.add('doc-name')
+                            docSelect.appendChild(option)
+
+                        }
+
+                    })
+
+
+            }
+</script>
 <script>
        document.getElementsByClassName('mobile-toggle')[0].addEventListener('click',function () {
         this.classList.toggle('mobile-toggle-active')

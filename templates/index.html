@@ -82,7 +82,12 @@
                         {% if ap.doc %}
                             <p>Доктор<br>{{ ap.doc.name }}</p>
                         {% endif %}
+                    {% if ap.service.name %}
                         <p>{{ ap.service.name }}</p>
+                    {% endif %}
+                    {% if ap.servicee.name %}
+                        <p>{{ ap.servicee.name }}</p>
+                    {% endif %}
                     </div>
                 </div>
             </div><!--// user-info-->
